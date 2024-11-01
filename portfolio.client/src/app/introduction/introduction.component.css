@@ -1,0 +1,27 @@
+.introductionSection {
+  width: 100%;
+  background-color: #00c260;
+  text-align: left;
+  padding: 10px 0 10px 0;
+  height: 350px;
+}
+
+.introduction {
+  width: 50%;
+  float: right;
+}
+
+.MotorCycleSection {
+  overflow: hidden;
+  width: 100%;
+  height: 400px;
+  background-image: url('../../../public/Assets/Images/Background/MotorCycle.gif');
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center top;
+}
+
+.SkillsSection {
+  width: 100%;
+  height: 400px;
+}
