@@ -1,22 +1,25 @@
 .fixed-bg {
   background-image: url('../../../public/Assets/Images/Background/Leafbackground.png');
-  min-height: 70vh;
+  min-height: 80vh;
   background-attachment: fixed;
-  background-position: center;
+  background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 0;
+  box-shadow: inset 0 0 0 1000px rgba(3, 30, 6,.2);
 }
 
 #slideshow {
   overflow: hidden;
-  height: 70vh;
+  height: 75vh;
   width: 100%;
-  margin: -70vh auto 0;
+  margin: -75vh auto 0;
   z-index: 1;
   position: relative;
 }
-
+.slide-number{
+    margin-top:60px;
+}
 
 .slide {
   float: left;
@@ -25,12 +28,11 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;
-  box-shadow: inset 0 0 0 1000px rgba(3, 30, 6,.2);
 }
 
 .slide-wrapper {
   width: calc(100vw * 4);
-  animation: slide 10s ease infinite;
+  animation: slide 40s ease infinite;
 }
 
 .slide:nth-child(1) {
