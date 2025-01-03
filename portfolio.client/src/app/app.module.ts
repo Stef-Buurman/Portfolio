@@ -9,6 +9,8 @@ import { HeaderComponent } from './header/header.component';
 import { IntroductionComponent } from './introduction/introduction.component';
 import { MotorcycleComponent } from './motorcycle/motorcycle.component';
 import { SkillsComponent } from './skills/skills.component';
+import { ProjectsComponent } from './projects/projects.component';
+import { WerkervaringComponent } from './werkervaring/werkervaring.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { SkillsComponent } from './skills/skills.component';
     HeaderComponent,
     IntroductionComponent,
     MotorcycleComponent,
-    SkillsComponent
+    SkillsComponent,
+    ProjectsComponent,
+    WerkervaringComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
