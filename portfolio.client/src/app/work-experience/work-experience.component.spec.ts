@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WerkervaringComponent } from './werkervaring.component';
+import { WorkExperienceComponent } from './work-experience.component';
 
-describe('WerkervaringComponent', () => {
-  let component: WerkervaringComponent;
-  let fixture: ComponentFixture<WerkervaringComponent>;
+describe('WorkExperienceComponent', () => {
+  let component: WorkExperienceComponent;
+  let fixture: ComponentFixture<WorkExperienceComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [WerkervaringComponent]
+      declarations: [WorkExperienceComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(WerkervaringComponent);
+    fixture = TestBed.createComponent(WorkExperienceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
