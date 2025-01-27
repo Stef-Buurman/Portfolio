@@ -1,0 +1,10 @@
+.fixed-bg {
+  background-image: url('../../../public/Assets/Images/Background/wp12860796-max-verstappen-computer-wallpapers.jpg');
+  min-height: 500px;
+  width: 100%;
+  background-attachment: fixed;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 0;
+}
