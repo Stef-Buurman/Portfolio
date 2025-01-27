@@ -14,31 +14,31 @@
   width: 25%;
 }
 
-.WorkExperience h1 {
-  text-align: center;
-  margin-bottom: 20px;
-}
+  .WorkExperience h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
 
-.WorkExperience ul {
-  list-style: none;
-  padding: 0;
-}
+  .WorkExperience ul {
+    list-style: none;
+    padding: 0;
+  }
 
-.WorkExperience li {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-  padding: 15px;
-  border: 1px solid #13383A;
-  border-radius: 8px;
-  background: #00C260;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
+  .WorkExperience li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #13383A;
+    border-radius: 8px;
+    background: #00C260;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
 
-.WorkExperience li:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
+    .WorkExperience li:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
 
 
   .WorkExperience .logo {
@@ -55,7 +55,7 @@
   display: flex;
   flex-direction: column;
   margin: auto;
-  width:60%;
+  width: 60%;
 }
 
 .job-title {
@@ -75,12 +75,12 @@
   margin-top: 5px;
 }
 
-.Bijbaantjes{
-    padding:17px;
-    margin:auto;
-    width:50%;
+.Bijbaantjes {
+  padding: 17px;
+  margin: auto;
+  width: 40%;
 }
 
-.BijbaantjesContainer{
-    background-color:rgba(0,0,0,0.2);
+.BijbaantjesContainer {
+  background-color: rgba(0,0,0,0.2);
 }
