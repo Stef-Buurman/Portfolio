@@ -9,7 +9,7 @@
   width: 50%;
   background-image: url('../../../../public/Assets/Images/Background/MotorCycle.gif');
   background-repeat: no-repeat;
-  background-position: center top;
+  background-position: center center;
   background-size: cover;
   margin: auto;
   height: 450px;
@@ -21,4 +21,52 @@
 .fixed-bg {
   background-image: url('../../../../public/Assets/Images/Background/pexels-karoldach-409696.jpg');
   background-position: center !important;
+}
+
+@media screen and (max-width: 1400px) {
+  .MotorCycleImage {
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .fixed-bg {
+    min-height: 390px !important;
+  }
+
+  .MotorCycleSection {
+    height: 350px;
+    margin: -370px auto 0;
+  }
+
+  .MotorCycleImage {
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .fixed-bg {
+    min-height: 290px !important;
+  }
+
+  .MotorCycleSection {
+    height: 250px;
+    margin: -270px auto 0;
+  }
+  .MotorCycleImage {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .fixed-bg {
+    min-height: 190px !important;
+  }
+  .MotorCycleSection {
+    height: 150px;
+    margin: -170px auto 0;
+  }
+  .MotorCycleImage {
+    width: 100%;
+  }
 }

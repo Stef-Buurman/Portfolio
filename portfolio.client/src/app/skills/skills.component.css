@@ -23,7 +23,7 @@
 
 .TechnicalSkills, .SoftSkills {
   margin: auto;
-  width: 20%;
+  width: 30%;
 }
 
 .listContainer ul {
@@ -53,4 +53,28 @@
 .skillsContainer {
   margin: auto;
   text-align: center;
+}
+
+@media screen and (max-width: 1250px) {
+  .TechnicalSkills, .SoftSkills {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .TechnicalSkills, .SoftSkills {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .TechnicalSkills, .SoftSkills {
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .TechnicalSkills, .SoftSkills {
+    width: 100%;
+  }
 }

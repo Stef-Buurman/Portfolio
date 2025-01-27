@@ -13,3 +13,20 @@
   width: 40%;
   margin:auto;
 }
+
+@media screen and (max-width: 950px) {
+  .introduction {
+    width: 60%;
+    height: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .introduction {
+    width: 75%;
+  }
+
+  .introductionSection {
+    height: auto;
+  }
+}

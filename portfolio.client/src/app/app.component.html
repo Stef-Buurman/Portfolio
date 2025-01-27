@@ -1,11 +1,21 @@
 <div class="scroll-container">
+  <div class="topnav {{isNavOpen ? 'responsive' : ''}}" id="myTopnav">
+    <button (click)="scrollToSection('introduction')">Introduction</button>
+    <button (click)="scrollToSection('skills')">Skills</button>
+    <button (click)="scrollToSection('projects')">Projects</button>
+    <button (click)="scrollToSection('work-experience')">Work Experience</button>
+    <button (click)="scrollToSection('hobbies')">Hobbies</button>
+    <button class="icon" (click)="openNav()">
+      <i class="fa fa-bars"></i>
+    </button>
+  </div>
   <app-slideshow></app-slideshow>
-  <app-introduction></app-introduction>
+  <app-introduction id="introduction"></app-introduction>
   <app-motorcycle></app-motorcycle>
-  <app-skills></app-skills>
-  <app-projects></app-projects>
+  <app-skills id="skills"></app-skills>
+  <app-projects id="projects"></app-projects>
   <app-programming></app-programming>
-  <app-work-experience></app-work-experience>
+  <app-work-experience id="work-experience"></app-work-experience>
   <app-formula1></app-formula1>
-  <app-hobbies></app-hobbies>
+  <app-hobbies id="hobbies"></app-hobbies>
 </div>

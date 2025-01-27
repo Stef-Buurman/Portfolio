@@ -14,8 +14,17 @@ interface WeatherForecast {
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-
+  isNavOpen: boolean = false;
   constructor() { }
 
-  title = 'portfolio.client';
+  scrollToSection(location:string): void {
+    const element = document.getElementById(location);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  openNav():void {
+    this.isNavOpen = !this.isNavOpen;
+  }
 }

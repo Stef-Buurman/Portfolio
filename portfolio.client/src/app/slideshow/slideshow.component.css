@@ -72,3 +72,17 @@
     margin-left: calc(-100vw * 3);
   }
 }
+@media screen and (max-width: 900px) {
+  .fixed-bg {
+    min-height: 40vh;
+  }
+
+  #slideshow {
+    height: 37.5vh;
+    margin: -37.5vh auto 0;
+  }
+
+  .slide {
+    height: 35vh;
+  }
+}
