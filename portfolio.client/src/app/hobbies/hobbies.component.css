@@ -4,7 +4,7 @@
 
 .HobbiesContainer {
   width: 40%;
-  margin: 30px auto;
+  margin: auto;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -28,7 +28,6 @@
   display: flex;
   align-items: center;
   padding: 15px;
-  /*border: 1px solid #ddd;*/
   border-radius: 8px;
   background: #1B3141;
   transition: transform 0.2s, box-shadow 0.2s;
