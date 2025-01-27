@@ -10,8 +10,8 @@ import { IntroductionComponent } from './introduction/introduction.component';
 import { MotorcycleComponent } from './motorcycle/motorcycle.component';
 import { SkillsComponent } from './skills/skills.component';
 import { ProjectsComponent } from './projects/projects.component';
-import { WerkervaringComponent } from './werkervaring/werkervaring.component';
 import { WorkExperienceComponent } from './work-experience/work-experience.component';
+import { HobbiesComponent } from './hobbies/hobbies.component';
 
 @NgModule({
   declarations: [
@@ -22,8 +22,8 @@ import { WorkExperienceComponent } from './work-experience/work-experience.compo
     MotorcycleComponent,
     SkillsComponent,
     ProjectsComponent,
-    WerkervaringComponent,
-    WorkExperienceComponent
+    WorkExperienceComponent,
+    HobbiesComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
