@@ -1,15 +1,18 @@
 .ProjectsSection {
+  padding-top: 17px;
   height: 350px;
   background-color: #00C260;
 }
 
-.ProjectsContainer{
-    width:40%;
-    margin:auto;
+.ProjectsContainer {
+  width: 40%;
+  margin: auto;
 }
-.ProjectsContainer h2 {
-  font-size: 25px;
-}
-.ProjectsContainer p {
-  font-size: 20px;
-}
+
+  .ProjectsContainer h2 {
+    font-size: 25px;
+  }
+
+  .ProjectsContainer p {
+    font-size: 20px;
+  }
