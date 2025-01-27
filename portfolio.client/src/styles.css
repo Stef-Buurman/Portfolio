@@ -10,3 +10,13 @@ body {
   background-color: #1b3141;
   margin: 0;
 }
+
+.fixed-bg {
+  min-height: 500px;
+  width: 100%;
+  background-attachment: fixed;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 0;
+}

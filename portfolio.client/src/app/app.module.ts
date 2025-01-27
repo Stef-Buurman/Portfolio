@@ -7,12 +7,13 @@ import { AppComponent } from './app.component';
 import { SlideshowComponent } from './slideshow/slideshow.component';
 import { HeaderComponent } from './header/header.component';
 import { IntroductionComponent } from './introduction/introduction.component';
-import { MotorcycleComponent } from './motorcycle/motorcycle.component';
+import { MotorcycleComponent } from './Backgrounds/motorcycle/motorcycle.component';
 import { SkillsComponent } from './skills/skills.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { WorkExperienceComponent } from './work-experience/work-experience.component';
 import { HobbiesComponent } from './hobbies/hobbies.component';
-import { Formula1Component } from './formula1/formula1.component';
+import { Formula1Component } from './Backgrounds/formula1/formula1.component';
+import { ProgrammingComponent } from './Backgrounds/programming/programming.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { Formula1Component } from './formula1/formula1.component';
     ProjectsComponent,
     WorkExperienceComponent,
     HobbiesComponent,
-    Formula1Component
+    Formula1Component,
+    ProgrammingComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,

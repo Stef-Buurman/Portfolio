@@ -7,7 +7,7 @@
 }
 .MotorCycleImage {
   width: 50%;
-  background-image: url('../../../public/Assets/Images/Background/MotorCycle.gif');
+  background-image: url('../../../../public/Assets/Images/Background/MotorCycle.gif');
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
@@ -19,12 +19,6 @@
 }
 
 .fixed-bg {
-  background-image: url('../../../public/Assets/Images/Background/pexels-karoldach-409696.jpg');
-  min-height: 500px;
-  width: 100%;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: 0;
+  background-image: url('../../../../public/Assets/Images/Background/pexels-karoldach-409696.jpg');
+  background-position: center !important;
 }
