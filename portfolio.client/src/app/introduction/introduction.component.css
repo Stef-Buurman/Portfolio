@@ -2,8 +2,7 @@
   width: 100%;
   background-color: #00c260;
   text-align: left;
-  padding: 10px 0 10px 0;
-  height: 350px;
+  padding: 100px 0 100px 0;
   font-size: 25px;
   justify-content: center;
   display: flex;
@@ -24,9 +23,5 @@
 @media screen and (max-width: 600px) {
   .introduction {
     width: 75%;
-  }
-
-  .introductionSection {
-    height: auto;
   }
 }

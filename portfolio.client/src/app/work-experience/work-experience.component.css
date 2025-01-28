@@ -84,3 +84,29 @@
 .BijbaantjesContainer {
   background-color: rgba(0,0,0,0.2);
 }
+
+@media screen and (max-width: 1150px) {
+  .WorkExperience {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .WorkExperience {
+    width: 60%;
+  }
+
+  .Bijbaantjes {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .WorkExperience {
+    width: 90%;
+  }
+
+  .Bijbaantjes {
+    width: 90%;
+  }
+}

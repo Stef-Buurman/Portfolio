@@ -59,3 +59,20 @@
     color: #DCFECC;
     margin-top: 5px;
   }
+@media screen and (max-width: 1400px) {
+  .HobbiesContainer {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .HobbiesContainer {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .HobbiesContainer ul {
+    grid-template-columns: repeat(auto-fit, minmax(98%, 1fr));
+  }
+}

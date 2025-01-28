@@ -1,7 +1,7 @@
 .ProjectsSection {
   padding-top: 17px;
-  height: 350px;
   background-color: #00C260;
+  padding-bottom: 20px;
 }
 
 .ProjectsContainer {
@@ -16,3 +16,15 @@
   .ProjectsContainer p {
     font-size: 20px;
   }
+
+@media screen and (max-width: 900px) {
+  .ProjectsContainer {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .ProjectsContainer {
+    width: 90%;
+  }
+}
