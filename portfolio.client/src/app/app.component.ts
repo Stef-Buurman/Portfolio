@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { AuthorizationService } from '../Services/AuthorizationService';
 
 interface WeatherForecast {
   date: string;
@@ -15,7 +16,10 @@ interface WeatherForecast {
 })
 export class AppComponent {
   isNavOpen: boolean = false;
-  constructor() { }
+  constructor(private authorizationService: AuthorizationService) { }
+  ngOnInit() {
+    this.authorizationService.getApiKey();
+  }
 
   scrollToSection(location:string): void {
     const element = document.getElementById(location);
@@ -26,5 +30,9 @@ export class AppComponent {
 
   openNav():void {
     this.isNavOpen = !this.isNavOpen;
+  }
+
+  ngOnDestroy() {
+    this.authorizationService.removeApiKey();
   }
 }
