@@ -12,7 +12,6 @@ namespace Portfolio.Server.Filters
             var context = actionContext.HttpContext;
             if (!context.Request.Headers.ContainsKey("Authorization"))
             {
-                Console.WriteLine("--------");
                 context.Response.StatusCode = 401;
                 return;
             }
@@ -23,7 +22,6 @@ namespace Portfolio.Server.Filters
                   { Value: var __ } => __,
                   _ => new ContactListOptions() { Authorization = Guid.NewGuid().ToString() }
               };
-            Console.WriteLine(JsonSerializer.Serialize(contactListOptions));
             if (context.Request.Headers["Authorization"] != contactListOptions.Authorization)
             {
                 context.Response.StatusCode = 401;
