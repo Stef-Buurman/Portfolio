@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { AuthorizationService } from '../Services/AuthorizationService';
+import { MatDialog } from '@angular/material/dialog';
+import { ContactListComponent } from './contact-list/contact-list.component';
 
 interface WeatherForecast {
   date: string;
@@ -16,7 +18,11 @@ interface WeatherForecast {
 })
 export class AppComponent {
   isNavOpen: boolean = false;
-  constructor(private authorizationService: AuthorizationService) { }
+  constructor(
+    private authorizationService: AuthorizationService,
+    private dialog: MatDialog
+  ) { }
+
   ngOnInit() {
     this.authorizationService.getApiKey();
   }
@@ -34,5 +40,11 @@ export class AppComponent {
 
   ngOnDestroy() {
     this.authorizationService.removeApiKey();
+  }
+
+  openContactList() {
+    const dialogRef = this.dialog.open(ContactListComponent,{
+      panelClass: 'contact-list'
+    });
   }
 }
