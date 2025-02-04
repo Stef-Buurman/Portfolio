@@ -7,7 +7,7 @@
         <input type="text"
                id="firstName"
                name="firstName"
-               [(ngModel)]="contact.FirstName"
+               [(ngModel)]="contact.firstName"
                #firstName="ngModel"
                required />
         <div *ngIf="firstName.invalid && firstName.touched">
@@ -20,7 +20,7 @@
         <input type="text"
                id="lastName"
                name="lastName"
-               [(ngModel)]="contact.LastName"
+               [(ngModel)]="contact.lastName"
                #lastName="ngModel"
                required />
         <div *ngIf="lastName.invalid && lastName.touched">
@@ -33,7 +33,7 @@
         <input type="text"
                id="company"
                name="company"
-               [(ngModel)]="contact.Company"
+               [(ngModel)]="contact.company"
                #company="ngModel"
                required />
         <div *ngIf="company.invalid && company.touched">
@@ -45,12 +45,12 @@
         <label for="employeeCount">Medewerkers Aantal</label>
         <select id="employeeCount"
                 name="employeeCount"
-                [(ngModel)]="contact.EmployeeCount"
+                [(ngModel)]="contact.employeeCount"
                 #employeeCount="ngModel"
                 required>
           <!--<option *ngFor="let count of employeeCounts" [value]="count">{{ count }}</option>-->
           <option *ngFor="let option of employeeCounts" [value]="option.index">
-            {{ option.label }}
+            {{ option.label | employeeEnum }}
           </option>
         </select>
         <div *ngIf="employeeCount.invalid && employeeCount.touched">
@@ -62,7 +62,7 @@
         <label for="companyInfo">Bedrijfs Informatie</label>
         <textarea id="companyInfo"
                   name="companyInfo"
-                  [(ngModel)]="contact.CompanyInformation"
+                  [(ngModel)]="contact.companyInformation"
                   #companyInfo="ngModel"
                   required></textarea>
         <div *ngIf="companyInfo.invalid && companyInfo.touched">
@@ -75,7 +75,7 @@
         <input type="email"
                id="email"
                name="email"
-               [(ngModel)]="contact.Email"
+               [(ngModel)]="contact.email"
                #email="ngModel"
                required
                email />
@@ -90,7 +90,7 @@
         <input type="tel"
                id="phone"
                name="phone"
-               [(ngModel)]="contact.Phone"
+               [(ngModel)]="contact.phone"
                #phone="ngModel"
                required
                pattern="^[0-9\\-\\+ ]{7,15}$" />
@@ -103,7 +103,7 @@
         <label for="message">Extra informatie</label>
         <textarea id="message"
                   name="message"
-                  [(ngModel)]="contact.Message"
+                  [(ngModel)]="contact.message"
                   #message="ngModel"></textarea>
       </div>
 
