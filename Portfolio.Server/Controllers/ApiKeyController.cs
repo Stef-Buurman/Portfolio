@@ -17,17 +17,8 @@ namespace Portfolio.Server.Controllers
         [HttpGet("create-api-key")]
         public IActionResult CreateApiKey()
         {
-            try
-            {
-                var apiKey = _authorizationService.GenerateApiKey();
-
-                return Ok(new { apiKey });
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error in CreateApiKey: {ex.Message}");
-                return StatusCode(500, "An error occurred while creating the API key.");
-            }
+            var apiKey = _authorizationService.GenerateApiKey();
+            return Ok(new { apiKey });
         }
     }
 }
