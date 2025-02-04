@@ -20,9 +20,16 @@ namespace Portfolio.Server.Controllers
         [ApiKeyActionFilter]
         public IActionResult UploadContact([FromBody] Contact contact)
         {
-            Console.WriteLine("dddddddddddddddd");
             _contactService.UploadContact(contact);
             return Ok();
+        }
+
+        [HttpGet("contacts")]
+        [ContactListFilter]
+        public async Task<IActionResult> GetContacts()
+        {
+            var contacts = await _contactService.GetContacts();
+            return Ok(contacts);
         }
     }
 }
