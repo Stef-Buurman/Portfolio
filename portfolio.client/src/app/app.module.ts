@@ -21,6 +21,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EmployeeEnumPipe } from '../Pipes/employee-enum.pipe';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { HuskyComponent } from './Backgrounds/husky/husky.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     Formula1Component,
     ProgrammingComponent,
     ContactComponent,
-    ContactListComponent
+    ContactListComponent,
+    HuskyComponent
   ],
   imports: [
     BrowserAnimationsModule,
