@@ -12,6 +12,8 @@ jobs:
       SSH_USER: ${{ secrets.UPDATE_PROJECT_USER }}
       SSH_IP: ${{ secrets.UPDATE_PROJECT_IP }}
       REMOTE_SCRIPT_PATH: ${{ secrets.UPDATE_PROJECT_FILE_PATH }}
+      APP_SETTINGS_PATH: ${{ secrets.APP_SETTINGS_PATH }}
+      API_KEY: ${{ secrets.API_KEY }}
     steps:
       - uses: actions/checkout@v4
 
@@ -20,3 +22,27 @@ jobs:
 
       - name: Set up virtual environment
         run: ssh $SSH_USER@$SSH_IP $REMOTE_SCRIPT_PATH
+
+      - name: Set api key
+        run: |
+          ssh "$SSH_USER@$SSH_IP" "cat > $APP_SETTINGS_PATH << EOF
+          {
+            \"Logging\": {
+              \"LogLevel\": {
+                \"Default\": \"Information\",
+                \"Microsoft.AspNetCore\": \"Warning\"
+              }
+            },
+            \"AllowedHosts\": \"*\",
+            \"Kestrel\": {
+              \"Endpoints\": {
+                \"Http\": {
+                  \"Url\": \"http://*:8801\"
+                }
+              }
+            },
+            \"ContactListFilter\": {
+              \"Authorization\": \"$API_KEY\"
+            }
+          }
+          EOF"

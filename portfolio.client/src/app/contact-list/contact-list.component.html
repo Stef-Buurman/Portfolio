@@ -1,0 +1,64 @@
+<section class="dialog-header">
+  <span>Contact List</span>
+  <div class="actions">
+    <div (click)="onClose()" class="container-close-btn">
+      <div class="circle">
+        <div class="line one"></div>
+        <div class="line two"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="ContactSection">
+  <div class="Contact">
+    <div *ngIf="contacts.length > 0">
+      <table class="contact-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Company</th>
+            <th>Employee Count</th>
+            <th>Company Info</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Message</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let contact of contacts">
+            <td>{{ contact.firstName }} {{ contact.lastName }}</td>
+            <td>{{ contact.company }}</td>
+            <td>{{ contact.employeeCount | employeeEnum }}</td>
+            <td>{{ contact.companyInformation }}</td>
+            <td>{{ contact.email }}</td>
+            <td *ngIf="contact.phone">{{ contact.phone }}</td>
+            <td>{{ contact.message }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="contacts.length === 0 && sendRequest">
+      <p>No contacts available.</p>
+    </div>
+
+    <div *ngIf="contacts.length === 0 && !sendRequest">
+      <form (ngSubmit)="getContacts()" #apiKeyForm="ngForm">
+        <div>
+          <label for="apiKey">API Key: </label>
+          <input type="text"
+                 id="apiKey"
+                 name="username"
+                 [(ngModel)]="apiKey"
+                 autocomplete="off"
+                 required
+                 #apiKeyInput="ngModel">
+        </div>
+        <div *ngIf="apiKeyInput.invalid && apiKeyInput.touched">
+          <p class="error">API Key is required.</p>
+        </div>
+        <button class="default-button submit-button" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</section>
