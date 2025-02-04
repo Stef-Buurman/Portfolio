@@ -1,0 +1,149 @@
+html {
+  position: relative;
+  min-height: 100%;
+  font-size: 14px;
+  scroll-behavior: smooth;
+  overflow: hidden;
+  color: #13383A;
+  font-family: Arial;
+}
+
+body {
+  background-color: #1b3141;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.fixed-bg {
+  min-height: 500px;
+  width: 100%;
+  background-attachment: fixed;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 0;
+}
+
+/*Close button*/
+
+.container-close-btn {
+  position: relative;
+  width: fit-content;
+  display: flex;
+
+  .circle {
+    width: 50px;
+    height: 50px;
+    background-color: #1B3141;
+    border-radius: 25px;
+    margin: auto;
+    box-shadow: 1px 1px 1px 1px #00C260;
+    position: relative;
+    transition: all .2s;
+
+    &:hover {
+      background-color: darken(#00C260, 10%);
+      cursor: pointer;
+    }
+
+    &:hover > .one {
+      height: 45px;
+      top: 3px;
+      transition: all .5s;
+      background-color: #1B3141;
+    }
+
+    &:hover > .two {
+      height: 45px;
+      top: 3px;
+      transition: all .5s;
+      background-color: #1B3141;
+    }
+  }
+
+  .line {
+    height: 20px;
+    width: 3px;
+    border-radius: 2px;
+    background-color: darken(#00C260, 00%);
+    position: absolute;
+    transition: all .5s;
+  }
+
+  .one {
+    top: 15px;
+    left: 23px;
+    transform: rotate(45deg)
+  }
+
+  .two {
+    top: 15px;
+    left: 23px;
+    transform: rotate(-45deg)
+  }
+}
+
+/*Default Button*/
+
+.default-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.default-button:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+
+
+
+.cdk-overlay-pane.contact-list {
+  max-width: 70vw !important;
+}
+
+.contact-list .mdc-dialog__surface {
+  background-color: #1B3141;
+  color: #00C260;
+}
+
+.dialog-header {
+  border-bottom: 1px solid black;
+  background-color: transparent;
+  font-size: 30px;
+  padding: 8px 6% 8px 6%;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dialog-header .actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+@media only screen and (max-width: 600px) {
+  .dialog-header {
+    padding: 8px 6% 8px 6%;
+    display: block;
+  }
+
+  .dialog-header .actions {
+    display: flex;
+  }
+
+  .dialog-header.actions > :last-child {
+    margin-left: auto;
+  }
+}
+
