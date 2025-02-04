@@ -7,7 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ToastService } from '../../Services/ToastService';
 
 @Component({
-  selector: 'app-contact',
+  selector: 'app-contact',  standalone: false,
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'
 })

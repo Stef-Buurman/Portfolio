@@ -42,7 +42,7 @@ body {
     transition: all .2s;
 
     &:hover {
-      background-color: darken(#00C260, 10%);
+      background-color: scale-color(#00C260, $lightness: -10%);
       cursor: pointer;
     }
 
@@ -65,7 +65,7 @@ body {
     height: 20px;
     width: 3px;
     border-radius: 2px;
-    background-color: darken(#00C260, 00%);
+    background-color: scale-color(#00C260, $lightness: 0%);
     position: absolute;
     transition: all .5s;
   }

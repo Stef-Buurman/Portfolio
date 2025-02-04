@@ -5,7 +5,7 @@ import { ToastService } from '../../Services/ToastService';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-contact-list',
+  selector: 'app-contact-list',  standalone: false,
   templateUrl: './contact-list.component.html',
   styleUrl: './contact-list.component.css'
 })

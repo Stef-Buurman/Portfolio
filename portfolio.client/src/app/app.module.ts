@@ -36,7 +36,6 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     Formula1Component,
     ProgrammingComponent,
     ContactComponent,
-    EmployeeEnumPipe,
     ContactListComponent
   ],
   imports: [
@@ -45,6 +44,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    EmployeeEnumPipe,
     FormsModule
   ],
   exports: [

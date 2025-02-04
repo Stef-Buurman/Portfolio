@@ -4,15 +4,9 @@ import { AuthorizationService } from '../Services/AuthorizationService';
 import { MatDialog } from '@angular/material/dialog';
 import { ContactListComponent } from './contact-list/contact-list.component';
 
-interface WeatherForecast {
-  date: string;
-  temperatureC: number;
-  temperatureF: number;
-  summary: string;
-}
-
 @Component({
   selector: 'app-root',
+  standalone: false,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
