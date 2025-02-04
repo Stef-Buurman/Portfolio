@@ -1,12 +1,12 @@
 import { EmployeeCount } from "../Enums/EmployeeCount";
 
 export interface IContact {
-  FirstName: string;
-  LastName: string;
-  Company: string;
-  EmployeeCount: number;
-  CompanyInformation: string;
-  Email: string;
-  Phone?: string;
-  Message: string;
+  firstName: string;
+  lastName: string;
+  company: string;
+  employeeCount: EmployeeCount;
+  companyInformation: string;
+  email: string;
+  phone?: string;
+  message: string;
 }
