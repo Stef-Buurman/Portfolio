@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, Observable } from "rxjs";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -34,8 +34,17 @@ export class AuthorizationService {
     });
   }
 
-  sendRequestWithData<T, R>(url: string, data: T): Observable<R> {
-    var headers = this.getHeaders()
+  postRequestWithData<T, R>(url: string, data: T): Observable<R> {
+    var headers = this.getHeaders();
     return this.http.post<R>(url, data, { headers })
   }
+
+  getRequest<T>(url: string, apiKey?: string): Observable<T> {
+    let headers = this.getHeaders();
+    if (apiKey) {
+      headers = headers.set('Authorization', apiKey);
+    }
+    return this.http.get<T>(url, { headers });
+  }
+
 }
