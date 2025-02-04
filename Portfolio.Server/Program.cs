@@ -1,3 +1,4 @@
+using Portfolio.Server.Models;
 using Portfolio.Server.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +18,7 @@ builder.Services.AddSession(options =>
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddSingleton<ContactService>();
 builder.Services.AddScoped<AuthorizationService>();
+builder.Services.Configure<ContactListOptions>(builder.Configuration.GetSection("ContactListFilter"));
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
