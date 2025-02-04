@@ -20,17 +20,21 @@ export class ContactListComponent{
   ) { }
 
   getContacts() {
+    if (!this.apiKey || this.apiKey.trim().length === 0) {
+      this.toastService.showWarning('Je hebt geen api-key ingevuld');
+      return;
+    }
     this.contactService.getContacts(this.apiKey).subscribe({
       next: (response: IContact[]) => {
         this.contacts = response;
         this.sendRequest = true;
-        this.toastService.showSuccess('De contacten zijn succesvol opgehaald!', 'Success');
+        this.toastService.showSuccess('De contacten zijn succesvol opgehaald!');
       },
       error: (error) => {
         if (error.status === 401) {
-          this.toastService.showError('Er is een verkeerde api-key ingevuld!', 'Error');
+          this.toastService.showError('Er is een verkeerde api-key ingevuld!');
         } else {
-          this.toastService.showError('Er is iets misgegaan!', 'Error');
+          this.toastService.showError('Er is iets misgegaan!');
         }
       }
     });
