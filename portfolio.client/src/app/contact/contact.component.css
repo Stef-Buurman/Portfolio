@@ -68,3 +68,15 @@ select {
     font-size: 16px;
     padding: 10px;
   }
+
+@media screen and (max-width: 1200px) {
+  .Contact {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .Contact {
+    width: 80%;
+  }
+}
