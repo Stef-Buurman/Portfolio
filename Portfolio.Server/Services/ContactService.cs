@@ -24,5 +24,10 @@ namespace Portfolio.Server.Services
         {
             return await _db.Table<Contact>().ToListAsync();
         }
+
+        public async Task DeleteContact(int id)
+        {
+            await _db.DeleteAsync<Contact>(id);
+        }
     }
 }

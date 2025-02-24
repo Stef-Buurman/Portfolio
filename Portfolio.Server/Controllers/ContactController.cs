@@ -31,5 +31,13 @@ namespace Portfolio.Server.Controllers
             var contacts = await _contactService.GetContacts();
             return Ok(contacts);
         }
+
+        [HttpDelete("contact/{id}")]
+        [ContactListFilter]
+        public async Task<IActionResult> DeleteContact(int id)
+        {
+            await _contactService.DeleteContact(id);
+            return Ok();
+        }
     }
 }
