@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../../Services/ContactService';
 import { IContact } from '../../Interfaces/IContact';
 import { ToastService } from '../../Services/ToastService';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ContactDeleteComponent } from '../contact-delete/contact-delete.component';
 
 @Component({
   selector: 'app-contact-list',  standalone: false,
@@ -16,7 +17,8 @@ export class ContactListComponent{
   constructor(
     private contactService: ContactService,
     private dialogRef: MatDialogRef<ContactListComponent>,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private dialog: MatDialog
   ) { }
 
   getContacts() {
@@ -27,6 +29,7 @@ export class ContactListComponent{
     this.contactService.getContacts(this.apiKey).subscribe({
       next: (response: IContact[]) => {
         this.contacts = response;
+        console.log(response)
         this.sendRequest = true;
         this.toastService.showSuccess('De contacten zijn succesvol opgehaald!');
       },
@@ -42,5 +45,28 @@ export class ContactListComponent{
 
   onClose(): void {
     this.dialogRef.close();
+  }
+
+  deleteContact(id?: number) {
+    console.log(id)
+    if (id) {
+      const deleteContactDialog = this.dialog.open(ContactDeleteComponent, {
+        panelClass: 'contact-list',
+        data: { contact: this.contacts.find(cont => cont.id == id)}
+      });
+      deleteContactDialog.afterClosed().subscribe({
+        next: (isDeleted:boolean) => {
+          if (isDeleted) {
+            this.contacts = this.contacts.filter(c => c.id !== id);
+            this.toastService.showSuccess('Het contact is succesvol verwijderd!');
+          } else {
+            this.toastService.showInfo('Het contact is niet verwijderd.')
+          }
+        },
+        error: () => {
+            this.toastService.showError('Er is iets misgegaan!');
+          }
+      })
+    }
   }
 }

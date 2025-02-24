@@ -17,4 +17,8 @@ export class ContactService {
   getContacts(apiKey:string):Observable<IContact[]> {
     return this.authorizationService.getRequest<IContact[]>('/api/contacts', apiKey);
   }
+
+  deleteContact(id: number, apiKey: string):Observable<any> {
+    return this.authorizationService.deleteRequest<IContact>(`/api/contact/${id}`, apiKey);
+  }
 }

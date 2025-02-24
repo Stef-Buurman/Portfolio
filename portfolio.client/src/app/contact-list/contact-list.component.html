@@ -15,13 +15,13 @@
       <table class="contact-table">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Company</th>
-            <th>Employee Count</th>
-            <th>Company Info</th>
+            <th>Contact naam</th>
+            <th>Bedrijfs naam</th>
+            <th>Medewerkers aantal</th>
+            <th>Bedrijfs info</th>
             <th>Email</th>
-            <th>Phone</th>
-            <th>Message</th>
+            <th>Telefoonnummer</th>
+            <th>Extra info</th>
           </tr>
         </thead>
         <tbody>
@@ -33,6 +33,7 @@
             <td>{{ contact.email }}</td>
             <td *ngIf="contact.phone">{{ contact.phone }}</td>
             <td>{{ contact.message }}</td>
+            <td class="DeleteTD"><Button class="default-button" (click)="deleteContact(contact.id)">Delete</Button></td>
           </tr>
         </tbody>
       </table>

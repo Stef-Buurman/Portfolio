@@ -22,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EmployeeEnumPipe } from '../Pipes/employee-enum.pipe';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HuskyComponent } from './Backgrounds/husky/husky.component';
+import { ContactDeleteComponent } from './contact-delete/contact-delete.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { HuskyComponent } from './Backgrounds/husky/husky.component';
     ProgrammingComponent,
     ContactComponent,
     ContactListComponent,
-    HuskyComponent
+    HuskyComponent,
+    ContactDeleteComponent
   ],
   imports: [
     BrowserAnimationsModule,

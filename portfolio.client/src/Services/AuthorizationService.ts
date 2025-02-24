@@ -40,11 +40,18 @@ export class AuthorizationService {
   }
 
   getRequest<T>(url: string, apiKey?: string): Observable<T> {
-    let headers = this.getHeaders();
+    var headers = this.getHeaders();
     if (apiKey) {
       headers = headers.set('Authorization', apiKey);
     }
     return this.http.get<T>(url, { headers });
   }
 
+  deleteRequest<T>(url: string, apiKey?: string): Observable<T> {
+    var headers = this.getHeaders();
+    if (apiKey) {
+      headers = headers.set('Authorization', apiKey);
+    }
+    return this.http.delete<T>(url, { headers });
+  }
 }
