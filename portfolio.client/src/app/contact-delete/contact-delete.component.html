@@ -9,25 +9,38 @@
     </div>
   </div>
 </section>
+
 <section class="ContactSection">
   <div class="Contact">
-    <p><span>Contact naam: </span>{{ contact.firstName }} {{ contact.lastName }}</p>
+    <p>
+      <span>Contact naam: </span>{{ contact.firstName }} {{ contact.lastName }}
+    </p>
     <p><span>Bedrijfsnaam: </span>{{ contact.company }}</p>
-    <p><span>Medewerkers aantal: </span>{{ contact.employeeCount | employeeEnum }}</p>
+    <p>
+      <span>Medewerkers aantal: </span
+      >{{ contact.employeeCount | employeeEnum }}
+    </p>
     <p><span>Bedrijfs info: </span>{{ contact.companyInformation }}</p>
     <p><span>Email: </span>{{ contact.email }}</p>
-    <p *ngIf="contact.phone"><span>Telefoonnummer: </span>{{ contact.phone }}</p>
-    <p *ngIf="contact.message"><span>Extra info: </span>{{ contact.message }}</p>
+    <p *ngIf="contact.phone">
+      <span>Telefoonnummer: </span>{{ contact.phone }}
+    </p>
+    <p *ngIf="contact.message">
+      <span>Extra info: </span>{{ contact.message }}
+    </p>
+
     <form (ngSubmit)="deleteContact()" #apiKeyForm="ngForm">
       <div>
         <label for="apiKey">API Key: </label>
-        <input type="text"
-               id="apiKey"
-               name="password"
-               [(ngModel)]="apiKey"
-               autocomplete="off"
-               required
-               #apiKeyInput="ngModel">
+        <input
+          type="text"
+          id="apiKey"
+          name="apiKey"
+          [(ngModel)]="apiKey"
+          autocomplete="off"
+          required
+          #apiKeyInput="ngModel"
+        />
       </div>
       <div *ngIf="apiKeyInput.invalid && apiKeyInput.touched">
         <p class="error">API Key is required.</p>

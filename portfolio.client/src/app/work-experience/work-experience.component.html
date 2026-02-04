@@ -3,20 +3,12 @@
     <div class="WorkExperience">
       <h1>Werk ervaring</h1>
       <ul>
-        <li>
-          <img src="Assets/Images/WerkErvaring/XD-Connects.png" alt="XD Connects" class="logo">
+        <li *ngFor="let work of workExperiences">
+          <img [src]="work.logo" [alt]="work.alt" class="logo" />
           <div class="details">
-            <div class="job-title">Software developer </div>
-            <div class="company">XD Connects</div>
-            <div class="date">Mei 2023 - Augustus 2023</div>
-          </div>
-        </li>
-        <li>
-          <img src="Assets/Images/WerkErvaring/XD-Connects.png" alt="XD Connects" class="logo">
-          <div class="details">
-            <div class="job-title">Stage </div>
-            <div class="company">XD Connects</div>
-            <div class="date">Augustus 2022 - April 2023</div>
+            <div class="job-title">{{ work.jobTitle }}</div>
+            <div class="company">{{ work.company }}</div>
+            <div class="date">{{ work.date }}</div>
           </div>
         </li>
       </ul>
@@ -25,9 +17,16 @@
       <div class="Bijbaantjes">
         <h2>Bijbaantjes</h2>
         <p>
-          Ik heb bij drie verschillende supermarkten gewerkt. In 2018 ben ik begonnen bij de Jumbo als vulploegmedewerker tot 2020. Vanaf 2020 tot 2022 heb ik gewerkt bij de Coop als allround medewerker. In 2021 heb ik een tijdje bij de Albert Heijn als bakkerijmedewerker gewerkt. Dit bleek echter niet te zijn waar ik naar op zoek was.
-          Op dit moment werk ik bij Coolblue als laad- en los medewerker op het depot in Rotterdam. Hier werk ik drie keer per week vroeg in de ochtend.
-          Doordat ik deze bijbanen heb gehad weet ik hoe het is om te samenwerken en om in een groep te werken. Daarnaast heb ik veel contact gehad met klanten wat mij in de toekomst kan helpen.
+          Ik heb bij drie verschillende supermarkten gewerkt. In 2018 ben ik
+          begonnen bij de Jumbo als vulploegmedewerker tot 2020. Vanaf 2020 tot
+          2022 heb ik gewerkt bij de Coop als allround medewerker. In 2021 heb
+          ik een tijdje bij de Albert Heijn als bakkerijmedewerker gewerkt. Dit
+          bleek echter niet te zijn waar ik naar op zoek was. Op dit moment werk
+          ik bij Coolblue als laad- en los medewerker op het depot in Rotterdam.
+          Hier werk ik drie keer per week vroeg in de ochtend. Doordat ik deze
+          bijbanen heb gehad weet ik hoe het is om te samenwerken en om in een
+          groep te werken. Daarnaast heb ik veel contact gehad met klanten wat
+          mij in de toekomst kan helpen.
         </p>
       </div>
     </div>

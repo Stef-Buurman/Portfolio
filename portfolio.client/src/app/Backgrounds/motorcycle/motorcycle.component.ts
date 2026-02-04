@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-motorcycle',  standalone: false,
+  selector: 'app-motorcycle',
+  standalone: true,
   templateUrl: './motorcycle.component.html',
-  styleUrl: './motorcycle.component.css'
+  styleUrls: ['./motorcycle.component.css'],
 })
-export class MotorcycleComponent {
-
-}
+export class MotorcycleComponent {}

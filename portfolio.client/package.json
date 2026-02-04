@@ -27,12 +27,13 @@
     "ngx-toastr": "^19.0.0",
     "run-script-os": "*",
     "rxjs": "~7.8.0",
+    "sass": "^1.97.3",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.1.5",
-    "@angular/cli": "^19.1.5",
+    "@angular/cli": "^21.1.2",
     "@angular/compiler-cli": "^19.1.4",
     "@types/jasmine": "~5.1.0",
     "@types/jest": "^29.5.14",
@@ -43,7 +44,6 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "node-sass": "^9.0.0",
     "typescript": "^5.7.3"
   }
 }

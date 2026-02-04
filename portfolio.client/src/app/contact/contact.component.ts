@@ -1,15 +1,27 @@
 import { Component, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { IContact } from '../../Interfaces/IContact';
 import { EmployeeCount } from '../../Enums/EmployeeCount';
 import { ContactService } from '../../Services/ContactService';
-import { ToastrService } from 'ngx-toastr';
 import { ToastService } from '../../Services/ToastService';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { EmployeeEnumPipe } from '../../Pipes/employee-enum.pipe';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-contact',  standalone: false,
+  selector: 'app-contact',
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    EmployeeEnumPipe,
+    MatDialogModule,
+    MatButtonModule,
+  ],
   templateUrl: './contact.component.html',
-  styleUrl: './contact.component.css'
+  styleUrls: ['./contact.component.css'],
 })
 export class ContactComponent {
   contact: IContact = {
@@ -20,17 +32,21 @@ export class ContactComponent {
     companyInformation: '',
     email: '',
     phone: '',
-    message: ''
+    message: '',
   };
 
-  employeeCounts = Object.keys(EmployeeCount).filter(key => isNaN(Number(key))).map((key, index) => ({
-    index: index - 1,
-    label: EmployeeCount[key as keyof typeof EmployeeCount],
-  }));
+  employeeCounts = Object.keys(EmployeeCount)
+    .filter((key) => isNaN(Number(key)))
+    .map((key, index) => ({
+      index: index - 1,
+      label: EmployeeCount[key as keyof typeof EmployeeCount],
+    }));
 
   @ViewChild('contactForm') contactForm!: NgForm;
-  constructor(private contactService: ContactService,
-    private toastService: ToastService) { }
+  constructor(
+    private contactService: ContactService,
+    private toastService: ToastService,
+  ) {}
 
   onSubmit() {
     if (this.contactForm.valid) {
@@ -39,12 +55,18 @@ export class ContactComponent {
       }
       this.contactService.sendContact(this.contact).subscribe({
         complete: () => {
-          this.toastService.showSuccess('Gelukt, uw bericht is successvol ontvangen!', 'Success');
+          this.toastService.showSuccess(
+            'Gelukt, uw bericht is successvol ontvangen!',
+            'Success',
+          );
           this.contactForm.onReset();
         },
         error: (error) => {
-          this.toastService.showError('Oeps! hier ging iets niet helemaal goed. Probeer het opnieuw!', 'Error');
-        }
+          this.toastService.showError(
+            'Oeps! hier ging iets niet helemaal goed. Probeer het opnieuw!',
+            'Error',
+          );
+        },
       });
     }
   }

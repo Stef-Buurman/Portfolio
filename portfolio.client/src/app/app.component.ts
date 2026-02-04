@@ -1,12 +1,35 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthorizationService } from '../Services/AuthorizationService';
 import { MatDialog } from '@angular/material/dialog';
 import { ContactListComponent } from './contact-list/contact-list.component';
+import { SlideshowComponent } from './slideshow/slideshow.component';
+import { IntroductionComponent } from './introduction/introduction.component';
+import { SkillsComponent } from './skills/skills.component';
+import { ProjectsComponent } from './projects/projects.component';
+import { WorkExperienceComponent } from './work-experience/work-experience.component';
+import { HobbiesComponent } from './hobbies/hobbies.component';
+import { ContactComponent } from './contact/contact.component';
+import { Formula1Component } from './Backgrounds/formula1/formula1.component';
+import { ProgrammingComponent } from './Backgrounds/programming/programming.component';
+import { HuskyComponent } from './Backgrounds/husky/husky.component';
+import { MotorcycleComponent } from './Backgrounds/motorcycle/motorcycle.component';
 
 @Component({
   selector: 'app-root',
-  standalone: false,
+  standalone: true,
+    imports: [
+    SlideshowComponent,
+    IntroductionComponent,
+    MotorcycleComponent,
+    SkillsComponent,
+    HuskyComponent,
+    ProjectsComponent,
+    ProgrammingComponent,
+    WorkExperienceComponent,
+    Formula1Component,
+    HobbiesComponent,
+    ContactComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

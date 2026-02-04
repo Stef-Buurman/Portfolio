@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-programming',  standalone: false,
+  selector: 'app-programming',
+  standalone: true,
   templateUrl: './programming.component.html',
-  styleUrl: './programming.component.css'
+  styleUrls: ['./programming.component.css'],
 })
-export class ProgrammingComponent {
-
-}
+export class ProgrammingComponent {}

@@ -1,22 +1,14 @@
 <div class="fixed-bg"></div>
-<section id="slideshow">
-  <div class="slide-wrapper">
 
-    <div class="slide slide-1">
-      <h1 class="slide-number">
-      </h1>
-    </div>
-    <div class="slide slide-2">
-      <h1 class="slide-number">
-      </h1>
-    </div>
-    <div class="slide slide-3">
-      <h1 class="slide-number">
-      </h1>
-    </div>
-    <div class="slide slide-4">
-      <h1 class="slide-number">
-      </h1>
-    </div>
+<section class="slideshow">
+  <div
+    class="slide-track"
+    [style.transform]="'translateX(-' + currentIndex * 100 + 'vw)'"
+  >
+    <div
+      class="slide"
+      *ngFor="let slide of slides"
+      [style.backgroundImage]="'url(' + slide + ')'"
+    ></div>
   </div>
 </section>
