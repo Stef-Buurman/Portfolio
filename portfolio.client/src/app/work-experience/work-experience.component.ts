@@ -19,7 +19,7 @@ export class WorkExperienceComponent {
     {
       logo: 'Assets/Images/WerkErvaring/LMS.png',
       alt: 'Last Mile Solutions',
-      jobTitle: 'Part time medewerker',
+      jobTitle: 'Werkstudent Fraudeteam',
       company: 'Last Mile Solutions',
       date: 'Augustus 2025 - Heden',
     },
