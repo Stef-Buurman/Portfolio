@@ -6,6 +6,7 @@ interface PortfolioSlide {
   position: string;
   label: string;
   note: string;
+  size?: string;
 }
 
 @Component({
@@ -18,34 +19,34 @@ interface PortfolioSlide {
 export class SlideshowComponent implements OnInit, OnDestroy {
   readonly slides: PortfolioSlide[] = [
     {
-      src: 'Assets/Images/Mijzelf/Foto5.jpg',
+      src: 'Assets/Images/Slideshow/Foto1.jpg',
       position: 'center 10%',
       label: 'Dit ben ik',
-      note: 'Gewoon een verzameling van dingen waar ik graag tijd in steek.',
+      note: 'Dit ben ik dus. Meestal achter een scherm, anders waarschijnlijk op de motor.',
     },
     {
-      src: 'Assets/Images/Mijzelf/MotorRoad.png',
+      src: 'Assets/Images/Slideshow/Foto2.png',
       position: 'center 58%',
       label: 'Even weg',
       note: 'Soms is een goede rit precies genoeg om mijn hoofd leeg te maken.',
     },
     {
-      src: 'Assets/Images/Mijzelf/Foto2.jpg',
+      src: 'Assets/Images/Slideshow/Foto3.jpg',
+      position: 'center 50%',
+      label: 'Even langs de beker',
+      note: 'Deze moest natuurlijk even op de foto.',
+    },
+    {
+      src: 'Assets/Images/Slideshow/Foto4.jpg',
       position: 'center 48%',
       label: 'Op de motor',
-      note: 'Eén van de dingen waar ik buiten code het meest van geniet.',
+      note: 'Hier begon het motorrijden voor mij eigenlijk een beetje.',
     },
     {
-      src: 'Assets/Images/Mijzelf/Foto3.jpg',
-      position: 'center 42%',
-      label: 'Nog zo’n moment',
-      note: 'Niet alles hoeft gepland te zijn om een goede herinnering te worden.',
-    },
-    {
-      src: 'Assets/Images/Mijzelf/foto1.png',
+      src: 'Assets/Images/Slideshow/Foto5.png',
       position: 'center 50%',
-      label: 'Een mooie dag',
-      note: 'Soms is het gewoon een kwestie van geluk hebben met het weer.',
+      label: 'Even wat anders',
+      note: 'Auto’s, circuit en een helm op. Prima combinatie.',
     },
   ];
 

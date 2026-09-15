@@ -34,6 +34,7 @@
             class="slide"
             [style.background-image]="'url(' + slide.src + ')'"
             [style.background-position]="slide.position"
+            [style.background-size]="slide.size || 'cover'"
             [attr.aria-hidden]="i !== currentIndex"
           ></div>
         </div>
