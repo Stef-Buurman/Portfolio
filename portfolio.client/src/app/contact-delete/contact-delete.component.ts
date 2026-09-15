@@ -9,8 +9,8 @@ import {
 import { MatButtonModule } from '@angular/material/button'; // if you use <button mat-button>
 import { ToastService } from '../../Services/ToastService';
 import { ContactService } from '../../Services/ContactService';
-import { IContact } from '../../Interfaces/IContact';
 import { EmployeeEnumPipe } from '../../Pipes/employee-enum.pipe';
+import { Contact } from '../../api/generated/data-contracts';
 
 @Component({
   selector: 'app-contact-delete',
@@ -28,13 +28,13 @@ import { EmployeeEnumPipe } from '../../Pipes/employee-enum.pipe';
   styleUrls: ['./contact-delete.component.css'],
 })
 export class ContactDeleteComponent implements OnInit {
-  public contact!: IContact;
+  public contact!: Contact;
   public apiKey: string = '';
 
   constructor(
     private contactService: ContactService,
     private dialogRef: MatDialogRef<ContactDeleteComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { contact: IContact },
+    @Inject(MAT_DIALOG_DATA) public data: { contact: Contact },
     private toastService: ToastService,
   ) {}
 

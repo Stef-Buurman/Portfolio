@@ -1,13 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { IContact } from '../../Interfaces/IContact';
-import { EmployeeCount } from '../../Enums/EmployeeCount';
 import { ContactService } from '../../Services/ContactService';
 import { ToastService } from '../../Services/ToastService';
 import { EmployeeEnumPipe } from '../../Pipes/employee-enum.pipe';
 import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ContactListComponent } from '../contact-list/contact-list.component';
+import { Contact, EmployeeCount } from '../../api/generated/data-contracts';
 
 @Component({
   selector: 'app-contact',
@@ -17,19 +16,19 @@ import { ContactListComponent } from '../contact-list/contact-list.component';
   styleUrls: ['./contact.component.css'],
 })
 export class ContactComponent {
-  contact: IContact = {
+  contact: Contact = {
+    id: 0,
     firstName: '',
     lastName: '',
     company: '',
     employeeCount: EmployeeCount.OneToTen,
     companyInformation: '',
     email: '',
-    phone: '',
+    phone: null,
     message: '',
   };
 
   employeeCounts = Object.values(EmployeeCount)
-    .filter((value): value is EmployeeCount => typeof value === 'number')
     .map((value) => ({
       index: value,
       label: value,

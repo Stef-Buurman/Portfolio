@@ -1,24 +1,20 @@
 import { Injectable } from '@angular/core';
 import { from, map, Observable, tap } from 'rxjs';
 import type { ApiResult } from 'typedapi-client-helpers';
-import { createApiKey } from '../api/methods/ApiKey.api';
+import { apiKeyCreateApiKeyGETApiCreateApiKey } from '../api/methods/ApiKey.api';
 import type {
-  ApiKeyResponse,
   HttpValidationProblemDetails,
   ProblemDetails,
 } from '../api/generated/data-contracts';
 
-type ApiKeyResult = ApiResult<
-  ApiKeyResponse,
-  HttpValidationProblemDetails | ProblemDetails
->;
+type ApiKeyResult = ApiResult<{ apiKey: string } | void, HttpValidationProblemDetails | ProblemDetails>;
 
 @Injectable({ providedIn: 'root' })
 export class AuthorizationService {
   private apiKey: string | null = null;
 
-  getApiKey(): Observable<ApiKeyResponse> {
-    return from(createApiKey()).pipe(
+  getApiKey(): Observable<{ apiKey: string }> {
+    return from(apiKeyCreateApiKeyGETApiCreateApiKey()).pipe(
       map((result) => this.unwrap(result)),
       tap(({ apiKey }) => {
         this.apiKey = apiKey;
@@ -34,9 +30,13 @@ export class AuthorizationService {
     this.apiKey = null;
   }
 
-  private unwrap(result: ApiKeyResult): ApiKeyResponse {
+  private unwrap(result: ApiKeyResult): { apiKey: string } {
     if (result.ok) {
-      return result.response;
+      if (result.response && typeof result.response === 'object' && 'apiKey' in result.response) {
+        return result.response;
+      }
+
+      throw new Error('API key response is missing the apiKey field.');
     }
 
     const error = new Error(

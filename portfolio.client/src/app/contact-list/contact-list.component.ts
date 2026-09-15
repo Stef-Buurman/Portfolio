@@ -7,10 +7,10 @@ import {
   MatDialogRef,
 } from '@angular/material/dialog';
 import { ContactService } from '../../Services/ContactService';
-import { IContact } from '../../Interfaces/IContact';
 import { ToastService } from '../../Services/ToastService';
 import { ContactDeleteComponent } from '../contact-delete/contact-delete.component';
 import { EmployeeEnumPipe } from '../../Pipes/employee-enum.pipe';
+import { Contact } from '../../api/generated/data-contracts';
 
 @Component({
   selector: 'app-contact-list',
@@ -21,7 +21,7 @@ import { EmployeeEnumPipe } from '../../Pipes/employee-enum.pipe';
   styleUrls: ['./contact-list.component.css'],
 })
 export class ContactListComponent {
-  public contacts: IContact[] = [];
+  public contacts: Contact[] = [];
   public sendRequest: boolean = false;
   public apiKey: string = '';
   constructor(
@@ -37,7 +37,7 @@ export class ContactListComponent {
       return;
     }
     this.contactService.getContacts(this.apiKey).subscribe({
-      next: (response: IContact[]) => {
+      next: (response: Contact[]) => {
         this.contacts = response;
         console.log(response);
         this.sendRequest = true;

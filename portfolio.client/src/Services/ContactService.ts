@@ -7,9 +7,9 @@ import type {
   ProblemDetails,
 } from '../api/generated/data-contracts';
 import {
-  deleteContact as deleteContactRequest,
-  getContacts as getContactsRequest,
-  uploadContact,
+  contactDeleteContactDELETEApiContactId,
+  contactGetContactsGETApiContacts,
+  contactUploadContactPOSTApiContact,
 } from '../api/methods/Contact.api';
 import { AuthorizationService } from './AuthorizationService';
 
@@ -33,7 +33,7 @@ export class ContactService {
     }
 
     return from(
-      uploadContact(contact, {
+      contactUploadContactPOSTApiContact(contact, {
         params: {
           headers: {
             Authorization: apiKey,
@@ -45,7 +45,7 @@ export class ContactService {
 
   getContacts(apiKey: string): Observable<Contact[]> {
     return from(
-      getContactsRequest({
+      contactGetContactsGETApiContacts({
         params: {
           headers: {
             Authorization: apiKey,
@@ -57,7 +57,7 @@ export class ContactService {
 
   deleteContact(id: number, apiKey: string): Observable<void> {
     return from(
-      deleteContactRequest(
+      contactDeleteContactDELETEApiContactId(
         { id },
         {
           params: {
