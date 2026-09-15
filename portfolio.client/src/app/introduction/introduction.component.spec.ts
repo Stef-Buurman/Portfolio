@@ -1,3 +1,4 @@
+import { beforeEach, describe, expect, it } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { IntroductionComponent } from './introduction.component';
@@ -8,9 +9,8 @@ describe('IntroductionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [IntroductionComponent]
-    })
-    .compileComponents();
+      imports: [IntroductionComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(IntroductionComponent);
     component = fixture.componentInstance;
