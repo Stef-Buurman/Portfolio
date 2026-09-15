@@ -1,14 +1,74 @@
-<div class="fixed-bg"></div>
+<section class="hero" aria-label="Introductie en foto's">
+  <div class="hero-copy">
+    <span class="eyebrow">Portfolio · Software development</span>
+    <h1>Ik bouw graag dingen die <em>echt gebruikt</em> kunnen worden.</h1>
+    <p>
+      Van schoolproject tot iets dat uiteindelijk in de praktijk draait. En als
+      ik niet achter mijn laptop zit, is de kans groot dat ik op de motor zit.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects">Bekijk mijn projecten</a>
+      <a class="ghost" href="#contact">Stuur me een bericht</a>
+    </div>
+  </div>
 
-<section class="slideshow">
   <div
-    class="slide-track"
-    [style.transform]="'translateX(-' + currentIndex * 100 + 'vw)'"
+    class="photo-stage"
+    (mouseenter)="setPaused(true)"
+    (mouseleave)="setPaused(false)"
+    (focusin)="setPaused(true)"
+    (focusout)="setPaused(false)"
   >
     <div
-      class="slide"
-      *ngFor="let slide of slides"
-      [style.backgroundImage]="'url(' + slide + ')'"
+      class="ambient"
+      [style.background-image]="'url(' + slides[currentIndex].src + ')'"
     ></div>
+    <figure class="photo-card">
+      <div class="slide-viewport">
+        <div
+          class="slide-track"
+          [style.transform]="'translateX(-' + currentIndex * 100 + '%)'"
+        >
+          <div
+            *ngFor="let slide of slides; let i = index"
+            class="slide"
+            [style.background-image]="'url(' + slide.src + ')'"
+            [style.background-position]="slide.position"
+            [attr.aria-hidden]="i !== currentIndex"
+          ></div>
+        </div>
+      </div>
+      <figcaption>
+        <span>{{ slides[currentIndex].label }}</span>
+        <p>{{ slides[currentIndex].note }}</p>
+      </figcaption>
+    </figure>
+
+    <button
+      class="arrow previous"
+      type="button"
+      (click)="previousSlide()"
+      aria-label="Vorige foto"
+    >
+      ←
+    </button>
+    <button
+      class="arrow next"
+      type="button"
+      (click)="nextSlide()"
+      aria-label="Volgende foto"
+    >
+      →
+    </button>
+  </div>
+
+  <div class="dots" aria-label="Kies een foto">
+    <button
+      *ngFor="let slide of slides; let i = index"
+      type="button"
+      [class.active]="i === currentIndex"
+      (click)="goToSlide(i)"
+      [attr.aria-label]="'Ga naar foto ' + (i + 1)"
+    ></button>
   </div>
 </section>

@@ -1,42 +1,293 @@
-.fixed-bg {
-  background-image: url("../../../public/Assets/Images/Background/Leafbackground.png");
-  min-height: 80vh;
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-size: cover;
-  box-shadow: inset 0 0 0 1000px rgba(3, 30, 6, 0.2);
+:host {
+  display: block;
 }
-
-.slideshow {
-  overflow: hidden;
-  height: 75vh;
-  width: 100%;
-  margin-top: -75vh;
+.hero {
   position: relative;
+  min-height: 100svh;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(460px, 1.22fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 82px);
+  padding: clamp(130px, 14vw, 180px) clamp(22px, 6vw, 92px)
+    clamp(70px, 7vw, 100px);
+  color: #eef7f2;
+  background:
+    radial-gradient(
+      circle at 12% 30%,
+      rgba(38, 225, 124, 0.16),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 90% 86%,
+      rgba(44, 133, 150, 0.14),
+      transparent 28%
+    ),
+    linear-gradient(140deg, #08171b 0%, #102b32 55%, #0b1d22 100%);
 }
-
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.22;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(to bottom, black, transparent 82%);
+}
+.hero-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 650px;
+}
+.eyebrow {
+  display: inline-block;
+  color: #4ce794;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+h1 {
+  margin: 14px 0 20px;
+  font-size: clamp(2.6rem, 5.8vw, 5.8rem);
+  line-height: 0.94;
+  letter-spacing: -0.06em;
+}
+h1 em {
+  font-style: normal;
+  color: #55e89b;
+}
+.hero-copy p {
+  max-width: 590px;
+  margin: 0;
+  color: rgba(238, 247, 242, 0.72);
+  font-size: clamp(1rem, 1.45vw, 1.22rem);
+  line-height: 1.7;
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+.hero-actions a {
+  padding: 13px 18px;
+  border-radius: 13px;
+  background: #35e185;
+  color: #081710;
+  text-decoration: none;
+  font-weight: 850;
+  box-shadow: 0 8px 26px rgba(53, 225, 133, 0.18);
+}
+.hero-actions .ghost {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+  color: #f4f8f6;
+  box-shadow: none;
+}
+.photo-stage {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+  padding: 38px 32px 30px;
+}
+.ambient {
+  position: absolute;
+  inset: 8% 1% 2%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(42px) saturate(1.25);
+  opacity: 0.28;
+  transform: scale(0.94);
+}
+.photo-card {
+  position: relative;
+  margin: 0;
+  transform: rotate(1.2deg);
+  border: 10px solid #eff0e8;
+  border-bottom-width: 86px;
+  border-radius: 7px;
+  background: #eaece4;
+  box-shadow:
+    0 40px 90px rgba(0, 0, 0, 0.45),
+    0 8px 25px rgba(0, 0, 0, 0.25);
+}
+.photo-card::before {
+  content: "";
+  position: absolute;
+  z-index: 5;
+  top: -25px;
+  left: 50%;
+  width: 108px;
+  height: 38px;
+  transform: translateX(-50%) rotate(-2deg);
+  background: rgba(235, 230, 203, 0.7);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+}
+.slide-viewport {
+  height: clamp(360px, 48vw, 650px);
+  overflow: hidden;
+  background: #0b171b;
+}
 .slide-track {
   display: flex;
+  width: 100%;
   height: 100%;
-  transition: transform 2.5s ease-in-out;
-  will-change: transform;
+  transition: transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-
 .slide {
-  min-width: 100vw;
-  height: 92%;
+  flex: 0 0 100%;
+  height: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
 }
-
-@media (max-width: 900px) {
-  .fixed-bg {
-    min-height: 40vh;
+figcaption {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: -70px;
+  color: #132026;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  transform: rotate(-1.2deg);
+}
+figcaption span {
+  font-weight: 900;
+  font-size: 1.1rem;
+}
+figcaption p {
+  max-width: 390px;
+  margin: 0;
+  text-align: right;
+  font-size: 0.83rem;
+  line-height: 1.4;
+  color: #53605d;
+}
+.arrow {
+  position: absolute;
+  z-index: 6;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  background: rgba(5, 18, 22, 0.62);
+  color: white;
+  font-size: 1.3rem;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: 0.2s;
+}
+.arrow:hover,
+.arrow:focus-visible {
+  background: #37df86;
+  color: #07150e;
+  transform: scale(1.07);
+  outline: none;
+}
+.previous {
+  left: 6px;
+}
+.next {
+  right: 6px;
+}
+.dots {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  bottom: 30px;
+  display: flex;
+  gap: 8px;
+  transform: translateX(-50%);
+}
+.dots button {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.28);
+  cursor: pointer;
+  transition: 0.25s;
+}
+.dots button.active {
+  width: 32px;
+  background: #48e392;
+}
+@media (max-width: 980px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 120px;
   }
-
-  .slideshow {
-    height: 37.5vh;
-    margin-top: -37.5vh;
+  .hero-copy {
+    max-width: 760px;
+  }
+  .photo-stage {
+    padding: 20px 16px 35px;
+  }
+  .slide-viewport {
+    height: min(65vw, 590px);
+  }
+}
+@media (max-width: 620px) {
+  .hero {
+    padding-inline: 14px;
+  }
+  .hero-copy {
+    padding-inline: 8px;
+  }
+  h1 {
+    font-size: clamp(2.45rem, 13vw, 4.2rem);
+  }
+  .hero-actions a {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  .photo-card {
+    border-width: 7px;
+    border-bottom-width: 92px;
+  }
+  .slide-viewport {
+    height: 62vh;
+    min-height: 430px;
+  }
+  .photo-stage {
+    padding-inline: 8px;
+  }
+  figcaption {
+    left: 14px;
+    right: 14px;
+    bottom: -76px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+  }
+  figcaption p {
+    text-align: left;
+  }
+  .arrow {
+    width: 44px;
+    height: 44px;
+  }
+  .previous {
+    left: -2px;
+  }
+  .next {
+    right: -2px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .slide-track,
+  .arrow {
+    transition: none;
   }
 }
