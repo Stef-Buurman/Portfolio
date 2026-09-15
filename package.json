@@ -1,0 +1,31 @@
+{
+  "name": "portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Stef Buurman portfolio",
+  "workspaces": [
+    "portfolio.client"
+  ],
+  "config": {
+    "clientOutput": "portfolio.client",
+    "serverOutput": "Portfolio.Server",
+    "serverTestOutput": "portfolio.Server.Tests",
+    "DBOutput": "portfolio.Database",
+    "DBTestsOutput": "portfolio.DB.Tests"
+  },
+  "scripts": {
+    "dev": "node Scripts/Node/dev.mjs",
+    "stop": "node Scripts/Node/stop.mjs",
+    "client:start": "npm run start --workspace portfolio.client",
+    "client:build": "npm run build --workspace portfolio.client",
+    "client:test": "npm run test --workspace portfolio.client",
+    "generate:api": "npm run generate:api --workspace portfolio.client",
+    "check:api": "npm run check:api --workspace portfolio.client",
+    "audit": "npm audit --workspaces",
+    "verify": "npm run client:build && npm run client:test && npm run check:api && npm run audit",
+    "prettier": "prettier --write \"portfolio.client/src/**/*.{ts,html,scss,css,json}\" \"*.json\""
+  },
+  "devDependencies": {
+    "prettier": "3.6.2"
+  }
+}
