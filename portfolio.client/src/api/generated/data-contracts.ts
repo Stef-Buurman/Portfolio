@@ -10,41 +10,38 @@
  * -------------------------------------------------------------------------------------
  */
 
-export interface ApiKeyResponse {
-  apiKey: string;
-}
-
 export interface Contact {
   /** @format int32 */
-  id?: number;
+  id: number;
   firstName: string;
   lastName: string;
   company: string;
-  /** @format int32 */
   employeeCount: EmployeeCount;
   companyInformation: string;
   /** @format email */
   email: string;
+  /** @format tel */
   phone?: string | null;
   message: string;
 }
 
 export const EmployeeCount = {
-  _0: 0,
-  _1: 1,
-  _2: 2,
-  _3: 3,
-  _4: 4,
-  _5: 5,
+  OneToTen: "OneToTen",
+  ElevenToFifty: "ElevenToFifty",
+  FiftyOneToTwoHundred: "FiftyOneToTwoHundred",
+  TwoHundredToFiveHundred: "TwoHundredToFiveHundred",
+  FiveHundredToOneThousand: "FiveHundredToOneThousand",
+  OneThousandPlus: "OneThousandPlus",
 } as const;
 export type EmployeeCount = (typeof EmployeeCount)[keyof typeof EmployeeCount];
 
 export type HttpValidationProblemDetails = ProblemDetails & {
-  errors?: Record<string, string[]>;
+  errors: Record<string, string[]>;
+  [key: string]: unknown;
 };
 
 export interface ProblemDetails {
-  type?: string | null;
+  "type"?: string | null;
   title?: string | null;
   /** @format int32 */
   status?: number | null;
@@ -53,7 +50,7 @@ export interface ProblemDetails {
   [key: string]: unknown;
 }
 
-export interface DeleteContactParams {
+export interface ContactDeleteContactDELETEApiContactIdParams {
   /** @format int32 */
   id: number;
 }

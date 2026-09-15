@@ -23,7 +23,17 @@ builder.Services
     .AddTypedApiJsonOptions();
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddTypedApiSwagger();
+builder.Services.AddTypedApiSwagger(options =>
+{
+    options.UseOneOfForPolymorphism();
+
+    options.SelectSubTypesUsing(baseType =>
+    {
+        return baseType.Assembly
+            .GetTypes()
+            .Where(type => type.IsClass && !type.IsAbstract && type.IsSubclassOf(baseType));
+    });
+});
 
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>

@@ -1,11 +1,8 @@
 {
-  "openapi": "3.0.1",
+  "openapi": "3.0.4",
   "info": {
     "title": "Portfolio.Server",
     "version": "1.0"
-  },
-  "x-typedapi": {
-    "contractVersion": 2
   },
   "paths": {
     "/api/create-api-key": {
@@ -13,20 +10,13 @@
         "tags": [
           "ApiKey"
         ],
-        "operationId": "createApiKey",
+        "operationId": "ApiKey_CreateApiKey_GET_api_create_api_key",
         "responses": {
           "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiKeyResponse"
-                }
-              }
-            }
+            "description": "OK"
           },
           "400": {
-            "description": "Bad Request",
+            "description": "Validation error",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -36,15 +26,26 @@
             }
           },
           "500": {
-            "description": "Server Error",
+            "description": "Unexpected server error",
             "content": {
               "application/problem+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ProblemDetails"
+                    },
+                    {
+                      "$ref": "#/components/schemas/HttpValidationProblemDetails"
+                    }
+                  ]
                 }
               }
             }
           }
+        },
+        "x-typedapi-operation": {
+          "controllerName": "ApiKey",
+          "actionName": "CreateApiKey"
         }
       }
     },
@@ -53,11 +54,20 @@
         "tags": [
           "Contact"
         ],
-        "operationId": "uploadContact",
+        "operationId": "Contact_UploadContact_POST_api_contact",
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contact"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contact"
+              }
+            },
+            "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/Contact"
               }
@@ -65,11 +75,11 @@
           }
         },
         "responses": {
-          "204": {
-            "description": "No Content"
+          "200": {
+            "description": "OK"
           },
           "400": {
-            "description": "Bad Request",
+            "description": "Validation error",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -79,15 +89,26 @@
             }
           },
           "500": {
-            "description": "Server Error",
+            "description": "Unexpected server error",
             "content": {
               "application/problem+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ProblemDetails"
+                    },
+                    {
+                      "$ref": "#/components/schemas/HttpValidationProblemDetails"
+                    }
+                  ]
                 }
               }
             }
           }
+        },
+        "x-typedapi-operation": {
+          "controllerName": "Contact",
+          "actionName": "UploadContact"
         }
       }
     },
@@ -96,12 +117,28 @@
         "tags": [
           "Contact"
         ],
-        "operationId": "getContacts",
+        "operationId": "Contact_GetContacts_GET_api_contacts",
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "OK",
             "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Contact"
+                  }
+                }
+              },
               "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Contact"
+                  }
+                }
+              },
+              "text/json": {
                 "schema": {
                   "type": "array",
                   "items": {
@@ -112,7 +149,7 @@
             }
           },
           "400": {
-            "description": "Bad Request",
+            "description": "Validation error",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -122,15 +159,26 @@
             }
           },
           "500": {
-            "description": "Server Error",
+            "description": "Unexpected server error",
             "content": {
               "application/problem+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ProblemDetails"
+                    },
+                    {
+                      "$ref": "#/components/schemas/HttpValidationProblemDetails"
+                    }
+                  ]
                 }
               }
             }
           }
+        },
+        "x-typedapi-operation": {
+          "controllerName": "Contact",
+          "actionName": "GetContacts"
         }
       }
     },
@@ -139,7 +187,7 @@
         "tags": [
           "Contact"
         ],
-        "operationId": "deleteContact",
+        "operationId": "Contact_DeleteContact_DELETE_api_contact_id",
         "parameters": [
           {
             "name": "id",
@@ -152,11 +200,11 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
+          "200": {
+            "description": "OK"
           },
           "400": {
-            "description": "Bad Request",
+            "description": "Validation error",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -166,41 +214,41 @@
             }
           },
           "500": {
-            "description": "Server Error",
+            "description": "Unexpected server error",
             "content": {
               "application/problem+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ProblemDetails"
+                    },
+                    {
+                      "$ref": "#/components/schemas/HttpValidationProblemDetails"
+                    }
+                  ]
                 }
               }
             }
           }
+        },
+        "x-typedapi-operation": {
+          "controllerName": "Contact",
+          "actionName": "DeleteContact"
         }
       }
     }
   },
   "components": {
     "schemas": {
-      "EmployeeCount": {
-        "type": "integer",
-        "format": "int32",
-        "enum": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5
-        ]
-      },
       "Contact": {
         "required": [
-          "firstName",
-          "lastName",
           "company",
-          "employeeCount",
           "companyInformation",
           "email",
+          "employeeCount",
+          "firstName",
+          "id",
+          "lastName",
           "message"
         ],
         "type": "object",
@@ -210,52 +258,85 @@
             "format": "int32"
           },
           "firstName": {
-            "type": "string",
-            "maxLength": 80
+            "maxLength": 80,
+            "minLength": 0,
+            "type": "string"
           },
           "lastName": {
-            "type": "string",
-            "maxLength": 80
+            "maxLength": 80,
+            "minLength": 0,
+            "type": "string"
           },
           "company": {
-            "type": "string",
-            "maxLength": 160
+            "maxLength": 160,
+            "minLength": 0,
+            "type": "string"
           },
           "employeeCount": {
             "$ref": "#/components/schemas/EmployeeCount"
           },
           "companyInformation": {
-            "type": "string",
-            "maxLength": 2000
+            "maxLength": 2000,
+            "minLength": 0,
+            "type": "string"
           },
           "email": {
+            "maxLength": 254,
+            "minLength": 0,
             "type": "string",
-            "format": "email",
-            "maxLength": 254
+            "format": "email"
           },
           "phone": {
+            "maxLength": 40,
+            "minLength": 0,
             "type": "string",
-            "nullable": true,
-            "maxLength": 40
+            "format": "tel",
+            "nullable": true
           },
           "message": {
-            "type": "string",
-            "maxLength": 4000
-          }
-        },
-        "additionalProperties": false
-      },
-      "ApiKeyResponse": {
-        "required": [
-          "apiKey"
-        ],
-        "type": "object",
-        "properties": {
-          "apiKey": {
+            "maxLength": 4000,
+            "minLength": 0,
             "type": "string"
           }
         },
         "additionalProperties": false
+      },
+      "EmployeeCount": {
+        "enum": [
+          "OneToTen",
+          "ElevenToFifty",
+          "FiftyOneToTwoHundred",
+          "TwoHundredToFiveHundred",
+          "FiveHundredToOneThousand",
+          "OneThousandPlus"
+        ],
+        "type": "string",
+        "x-enumFlags": false
+      },
+      "HttpValidationProblemDetails": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ProblemDetails"
+          },
+          {
+            "required": [
+              "errors"
+            ],
+            "type": "object",
+            "properties": {
+              "errors": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "additionalProperties": { }
+          }
+        ]
       },
       "ProblemDetails": {
         "type": "object",
@@ -282,29 +363,13 @@
             "nullable": true
           }
         },
-        "additionalProperties": {}
-      },
-      "HttpValidationProblemDetails": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ProblemDetails"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "errors": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        ]
+        "additionalProperties": { }
       }
     }
+  },
+  "x-typedapi": {
+    "contractVersion": 2,
+    "producer": "TypedApi.Swagger",
+    "producerVersion": "0.3.3"
   }
 }
