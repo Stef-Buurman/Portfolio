@@ -1,3 +1,30 @@
-.fixed-bg {
-  background-image: url('../../../../public/Assets/Images/Background/MaxVerstappen.jpg');
+:host {
+  display: block;
+}
+.visual-break {
+  position: relative;
+  min-height: clamp(300px, 42vw, 520px);
+  display: flex;
+  align-items: flex-end;
+  padding: clamp(22px, 5vw, 56px);
+  box-sizing: border-box;
+  background-image:
+    linear-gradient(to top, rgba(4, 17, 21, 0.7), rgba(4, 17, 21, 0.05) 55%),
+    url("../../../../public/Assets/Images/Background/MaxVerstappen.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.visual-break span {
+  max-width: 680px;
+  color: white;
+  font-size: clamp(1.6rem, 4vw, 3.4rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  text-shadow: 0 3px 20px rgba(0, 0, 0, 0.35);
+}
+@media (max-width: 900px) {
+  .visual-break {
+    background-attachment: scroll;
+  }
 }
