@@ -1,25 +1,68 @@
-<div class="scroll-container">
-  <div class="topnav {{isNavOpen ? 'responsive' : ''}}" id="myTopnav">
-    <button (click)="scrollToSection('introduction')">Introductie</button>
-    <button (click)="scrollToSection('skills')">Skills</button>
-    <button (click)="scrollToSection('projects')">Projecten</button>
-    <button (click)="scrollToSection('work-experience')">Werkervaring</button>
-    <button (click)="scrollToSection('hobbies')">Hobbies</button>
-    <button (click)="scrollToSection('contact')">Contact</button>
-    <!-- <button (click)="openContactList()">Contacten</button> -->
-    <button class="icon" (click)="openNav()">
-      <i class="fa fa-bars"></i>
+<div class="site-shell">
+  <header class="site-header">
+    <button
+      class="brand"
+      type="button"
+      (click)="scrollToSection('top')"
+      aria-label="Naar boven"
+    >
+      <span class="brand-mark">SB</span>
+      <span class="brand-copy"
+        ><strong>Stef Buurman</strong><small>Software developer</small></span
+      >
     </button>
-  </div>
-  <app-slideshow></app-slideshow>
-  <app-introduction id="introduction"></app-introduction>
-  <app-motorcycle></app-motorcycle>
-  <app-skills id="skills"></app-skills>
-  <app-husky></app-husky>
-  <app-projects id="projects"></app-projects>
-  <app-programming></app-programming>
-  <app-work-experience id="work-experience"></app-work-experience>
-  <app-formula1></app-formula1>
-  <app-hobbies id="hobbies"></app-hobbies>
-  <app-contact id="contact"></app-contact>
+
+    <nav
+      class="navigation"
+      [class.open]="isNavOpen"
+      aria-label="Hoofdnavigatie"
+    >
+      <button type="button" (click)="scrollToSection('introduction')">
+        Over mij
+      </button>
+      <button type="button" (click)="scrollToSection('skills')">Skills</button>
+      <button type="button" (click)="scrollToSection('projects')">
+        Projecten
+      </button>
+      <button type="button" (click)="scrollToSection('work-experience')">
+        Ervaring
+      </button>
+      <button type="button" (click)="scrollToSection('hobbies')">
+        Hobbies
+      </button>
+      <button
+        class="nav-cta"
+        type="button"
+        (click)="scrollToSection('contact')"
+      >
+        Contact
+      </button>
+    </nav>
+
+    <button
+      class="menu-button"
+      type="button"
+      (click)="toggleNav()"
+      [attr.aria-expanded]="isNavOpen"
+      aria-label="Menu openen of sluiten"
+    >
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <main id="top">
+    <app-slideshow></app-slideshow>
+    <app-introduction id="introduction"></app-introduction>
+    <app-motorcycle></app-motorcycle>
+    <app-skills id="skills"></app-skills>
+    <app-husky></app-husky>
+    <app-projects id="projects"></app-projects>
+    <app-programming></app-programming>
+    <app-work-experience id="work-experience"></app-work-experience>
+    <app-formula1></app-formula1>
+    <app-hobbies id="hobbies"></app-hobbies>
+    <app-contact id="contact"></app-contact>
+  </main>
 </div>
+
+<app-toast-container></app-toast-container>
