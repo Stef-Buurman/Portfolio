@@ -1,13 +1,3 @@
-import { EmployeeCount } from "../Enums/EmployeeCount";
+import type { Contact } from '../api/generated/data-contracts';
 
-export interface IContact {
-  id?: number;
-  firstName: string;
-  lastName: string;
-  company: string;
-  employeeCount: EmployeeCount;
-  companyInformation: string;
-  email: string;
-  phone?: string;
-  message: string;
-}
+export type IContact = Contact;
