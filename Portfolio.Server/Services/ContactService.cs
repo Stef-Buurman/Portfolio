@@ -1,33 +1,24 @@
-﻿using Portfolio.Server.Models;
+using Portfolio.Server.Models;
 using Portfolio.Server.Utils;
 using SQLite;
 
 namespace Portfolio.Server.Services
 {
+
     public class ContactService
     {
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly SQLiteAsyncConnection _db;
+        private readonly SQLiteAsyncConnection _db = Globals.GetDatabase();
 
-        public ContactService(IHttpContextAccessor httpContextAccessor)
+        public Task<int> UploadContact(Contact contact, CancellationToken cancellationToken = default)
         {
-            _httpContextAccessor = httpContextAccessor;
-            _db = Globals.GetDatabase();
+            cancellationToken.ThrowIfCancellationRequested();
+            return _db.InsertAsync(contact);
         }
 
-        public void UploadContact(Contact contact)
-        {
-            _db.InsertAsync(contact);
-        }
+        public Task<List<Contact>> GetContacts() =>
+            _db.Table<Contact>().ToListAsync();
 
-        public async Task<List<Contact>> GetContacts()
-        {
-            return await _db.Table<Contact>().ToListAsync();
-        }
-
-        public async Task DeleteContact(int id)
-        {
-            await _db.DeleteAsync<Contact>(id);
-        }
+        public Task<int> DeleteContact(int id) =>
+            _db.DeleteAsync<Contact>(id);
     }
 }

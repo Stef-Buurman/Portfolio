@@ -1,7 +1,7 @@
-﻿namespace Portfolio.Server.Models
+namespace Portfolio.Server.Models
 {
-    public class ContactListOptions
+    public sealed class ContactListOptions
     {
-        public string Authorization { get; set; }
+        public string Authorization { get; set; } = string.Empty;
     }
 }

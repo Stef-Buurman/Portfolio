@@ -1,43 +1,38 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Portfolio.Server.Filters;
 using Portfolio.Server.Models;
 using Portfolio.Server.Services;
 
 namespace Portfolio.Server.Controllers
 {
+
     [ApiController]
     [Route("api")]
-    public class ContactController : ControllerBase
+    public class ContactController(ContactService contactService) : ControllerBase
     {
-        private readonly ContactService _contactService;
-
-        public ContactController(ContactService contactService)
-        {
-            _contactService = contactService;
-        }
-
         [HttpPost("contact")]
         [ApiKeyActionFilter]
-        public IActionResult UploadContact([FromBody] Contact contact)
+        public async Task<IActionResult> UploadContact(
+            [FromBody] Contact contact,
+            CancellationToken cancellationToken)
         {
-            _contactService.UploadContact(contact);
-            return Ok();
+            await contactService.UploadContact(contact, cancellationToken);
+            return NoContent();
         }
 
         [HttpGet("contacts")]
         [ContactListFilter]
-        public async Task<IActionResult> GetContacts()
+        public async Task<ActionResult<IReadOnlyList<Contact>>> GetContacts()
         {
-            var contacts = await _contactService.GetContacts();
-            return Ok(contacts);
+            return Ok(await contactService.GetContacts());
         }
 
-        [HttpDelete("contact/{id}")]
+        [HttpDelete("contact/{id:int}")]
         [ContactListFilter]
         public async Task<IActionResult> DeleteContact(int id)
         {
-            await _contactService.DeleteContact(id);
-            return Ok();
+            await contactService.DeleteContact(id);
+            return NoContent();
         }
     }
 }
