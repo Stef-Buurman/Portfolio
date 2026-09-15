@@ -16,7 +16,7 @@ import { EmployeeEnumPipe } from '../../Pipes/employee-enum.pipe';
   selector: 'app-contact-list',
   standalone: true,
   imports: [CommonModule, FormsModule, MatDialogModule, EmployeeEnumPipe],
-  providers: [ContactService, ToastService, MatDialogRef],
+  providers: [ContactService, ToastService],
   templateUrl: './contact-list.component.html',
   styleUrls: ['./contact-list.component.css'],
 })

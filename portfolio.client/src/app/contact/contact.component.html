@@ -1,114 +1,117 @@
-<section class="ContactSection">
-  <div class="Contact">
-    <h2>Contact</h2>
-    <form #contactForm="ngForm" (ngSubmit)="onSubmit()">
-      <div>
-        <label for="firstName">Voornaam</label>
-        <input type="text"
-               id="firstName"
-               name="firstName"
-               [(ngModel)]="contact.firstName"
-               #firstName="ngModel"
-               required />
-        <div *ngIf="firstName.invalid && firstName.touched">
-          <small>Voornaam is verplicht.</small>
-        </div>
-      </div>
+<section class="contact-section">
+  <div class="contact-copy">
+    <span>Contact</span>
+    <h2>Heb je een vraag of wil je gewoon even contact opnemen?</h2>
+    <p>
+      Stuur gerust een bericht. Ik lees het zelf en probeer zo snel mogelijk te
+      reageren.
+    </p>
+  </div>
 
-      <div>
-        <label for="lastName">Achternaam</label>
-        <input type="text"
-               id="lastName"
-               name="lastName"
-               [(ngModel)]="contact.lastName"
-               #lastName="ngModel"
-               required />
-        <div *ngIf="lastName.invalid && lastName.touched">
-          <small>Achternaam is verplicht.</small>
-        </div>
-      </div>
-
-      <div>
-        <label for="company">Bedrijfsnaam</label>
-        <input type="text"
-               id="company"
-               name="company"
-               [(ngModel)]="contact.company"
-               #company="ngModel"
-               required />
-        <div *ngIf="company.invalid && company.touched">
-          <small>Bedrijfsnaam is verplicht.</small>
-        </div>
-      </div>
-
-      <div>
-        <label for="employeeCount">Medewerkers Aantal</label>
-        <select id="employeeCount"
-                name="employeeCount"
-                [(ngModel)]="contact.employeeCount"
-                #employeeCount="ngModel"
-                required>
-          <!--<option *ngFor="let count of employeeCounts" [value]="count">{{ count }}</option>-->
-          <option *ngFor="let option of employeeCounts" [value]="option.index">
+  <form #contactForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="row">
+      <label
+        >Voornaam<input
+          type="text"
+          name="firstName"
+          [(ngModel)]="contact.firstName"
+          #firstName="ngModel"
+          autocomplete="given-name"
+          required
+      /></label>
+      <label
+        >Achternaam<input
+          type="text"
+          name="lastName"
+          [(ngModel)]="contact.lastName"
+          #lastName="ngModel"
+          autocomplete="family-name"
+          required
+      /></label>
+    </div>
+    <div class="row">
+      <label
+        >Bedrijfsnaam<input
+          type="text"
+          name="company"
+          [(ngModel)]="contact.company"
+          #company="ngModel"
+          autocomplete="organization"
+          required
+      /></label>
+      <label
+        >Aantal medewerkers
+        <select
+          name="employeeCount"
+          [(ngModel)]="contact.employeeCount"
+          #employeeCount="ngModel"
+          required
+        >
+          <option
+            *ngFor="let option of employeeCounts"
+            [ngValue]="option.index"
+          >
             {{ option.label | employeeEnum }}
           </option>
         </select>
-        <div *ngIf="employeeCount.invalid && employeeCount.touched">
-          <small>Medewerkers aantal is verplicht.</small>
-        </div>
-      </div>
+      </label>
+    </div>
+    <label
+      >Bedrijfsinformatie<textarea
+        name="companyInfo"
+        [(ngModel)]="contact.companyInformation"
+        #companyInfo="ngModel"
+        rows="4"
+        required
+      ></textarea>
+    </label>
+    <div class="row">
+      <label
+        >E-mail<input
+          type="email"
+          name="email"
+          [(ngModel)]="contact.email"
+          #email="ngModel"
+          autocomplete="email"
+          required
+          email
+      /></label>
+      <label
+        >Telefoonnummer <small>(optioneel)</small
+        ><input
+          type="tel"
+          name="phone"
+          [(ngModel)]="contact.phone"
+          #phone="ngModel"
+          autocomplete="tel"
+          pattern="^[0-9\-\+ ]{7,15}$"
+      /></label>
+    </div>
+    <label
+      >Extra informatie<textarea
+        name="message"
+        [(ngModel)]="contact.message"
+        #message="ngModel"
+        rows="5"
+      ></textarea>
+    </label>
+    <div class="form-footer">
+      <p *ngIf="contactForm.invalid && contactForm.submitted">
+        Controleer even of alle verplichte velden goed zijn ingevuld.
+      </p>
+      <button type="submit" [disabled]="contactForm.invalid">
+        Versturen <span>→</span>
+      </button>
+    </div>
+  </form>
 
-      <div>
-        <label for="companyInfo">Bedrijfs Informatie</label>
-        <textarea id="companyInfo"
-                  name="companyInfo"
-                  [(ngModel)]="contact.companyInformation"
-                  #companyInfo="ngModel"
-                  required></textarea>
-        <div *ngIf="companyInfo.invalid && companyInfo.touched">
-          <small>Bedrijfs informatie is verplicht.</small>
-        </div>
-      </div>
-
-      <div>
-        <label for="email">Email</label>
-        <input type="email"
-               id="email"
-               name="email"
-               [(ngModel)]="contact.email"
-               #email="ngModel"
-               required
-               email />
-        <div *ngIf="email.invalid && email.touched">
-          <small *ngIf="email.errors?.['required']">Email is verplicht.</small>
-          <small *ngIf="email.errors?.['email']">Email is een verkeerd format.</small>
-        </div>
-      </div>
-
-      <div>
-        <label for="phone">Telefoonnummer</label>
-        <input type="tel"
-               id="phone"
-               name="phone"
-               [(ngModel)]="contact.phone"
-               #phone="ngModel"
-               required
-               pattern="^[0-9\\-\\+ ]{7,15}$" />
-        <div *ngIf="phone.invalid && phone.touched">
-          <small *ngIf="phone.errors?.['pattern']">Telefoonnummer is een verkeerd format.</small>
-        </div>
-      </div>
-
-      <div>
-        <label for="message">Extra informatie</label>
-        <textarea id="message"
-                  name="message"
-                  [(ngModel)]="contact.message"
-                  #message="ngModel"></textarea>
-      </div>
-
-      <button type="submit" [disabled]="contactForm.invalid">Send</button>
-    </form>
-
-  </div>
+  <button
+    class="contact-admin-trigger"
+    type="button"
+    (click)="openContactList()"
+    aria-label="Contactbeheer openen"
+    title="Contactbeheer"
+  >
+    beheer
+  </button>
 </section>

@@ -1,25 +1,18 @@
 import { Component, ViewChild } from '@angular/core';
-import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { IContact } from '../../Interfaces/IContact';
 import { EmployeeCount } from '../../Enums/EmployeeCount';
 import { ContactService } from '../../Services/ContactService';
 import { ToastService } from '../../Services/ToastService';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
 import { EmployeeEnumPipe } from '../../Pipes/employee-enum.pipe';
 import { CommonModule } from '@angular/common';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ContactListComponent } from '../contact-list/contact-list.component';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    EmployeeEnumPipe,
-    MatDialogModule,
-    MatButtonModule,
-  ],
+  imports: [CommonModule, FormsModule, EmployeeEnumPipe, MatDialogModule],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css'],
 })
@@ -35,24 +28,30 @@ export class ContactComponent {
     message: '',
   };
 
-  employeeCounts = Object.keys(EmployeeCount)
-    .filter((key) => isNaN(Number(key)))
-    .map((key, index) => ({
-      index: index - 1,
-      label: EmployeeCount[key as keyof typeof EmployeeCount],
+  employeeCounts = Object.values(EmployeeCount)
+    .filter((value): value is EmployeeCount => typeof value === 'number')
+    .map((value) => ({
+      index: value,
+      label: value,
     }));
 
   @ViewChild('contactForm') contactForm!: NgForm;
   constructor(
     private contactService: ContactService,
     private toastService: ToastService,
+    private dialog: MatDialog,
   ) {}
 
-  onSubmit() {
+  openContactList(): void {
+    this.dialog.open(ContactListComponent, {
+      panelClass: 'contact-list',
+      width: 'min(1100px, 96vw)',
+      maxWidth: '96vw',
+    });
+  }
+
+  onSubmit(): void {
     if (this.contactForm.valid) {
-      if (typeof this.contact.employeeCount === 'string') {
-        this.contact.employeeCount = parseInt(this.contact.employeeCount);
-      }
       this.contactService.sendContact(this.contact).subscribe({
         complete: () => {
           this.toastService.showSuccess(

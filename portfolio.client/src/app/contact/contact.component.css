@@ -1,82 +1,157 @@
-.ContactSection {
-  color: #00C260;
-  width: 100%;
-  background-color: #184649;
-  text-align: left;
-  padding: 100px 0 100px 0;
-  font-size: 25px;
-  justify-content: center;
+:host {
+  display: block;
+}
+.contact-section {
+  position: relative;
+  display: grid;
+  grid-template-columns: 0.82fr 1.18fr;
+  gap: clamp(34px, 7vw, 90px);
+  padding: clamp(78px, 10vw, 135px) clamp(20px, 7vw, 105px);
+  background: linear-gradient(135deg, #08191e, #12353b);
+  color: #eef7f2;
+}
+.contact-copy {
+  max-width: 540px;
+  justify-self: end;
+}
+.contact-copy > span {
+  color: #4ae291;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.contact-copy h2 {
+  margin: 9px 0 18px;
+  font-size: clamp(2.15rem, 4.5vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+.contact-copy p {
+  color: rgba(255, 255, 255, 0.63);
+  font-size: 1.06rem;
+  line-height: 1.7;
+}
+form {
+  width: min(700px, 100%);
   display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
-
-.Contact {
-  width: 40%;
-  margin: auto;
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
 }
-
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 0.86rem;
+  font-weight: 750;
+}
+label small {
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+}
 input,
 textarea,
 select {
+  width: 100%;
   box-sizing: border-box;
-  width: 100%;
-  padding: 8px;
-  margin: 5px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 13px 14px;
+  background: rgba(255, 255, 255, 0.065);
+  color: #f4f8f6;
+  font: inherit;
+  outline: none;
+  transition: 0.2s;
 }
-
-button {
-  width: 100%;
-  padding: 10px;
-  background: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
+select option {
+  color: #10252a;
+  background: white;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #48df90;
+  box-shadow: 0 0 0 3px rgba(72, 223, 144, 0.1);
+  background: rgba(255, 255, 255, 0.09);
+}
+textarea {
+  resize: vertical;
+}
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.form-footer p {
+  margin: 0;
+  color: #ffb8b8;
+  font-size: 0.82rem;
+}
+.form-footer button {
+  margin-left: auto;
+  min-width: 170px;
+  border: 0;
+  border-radius: 14px;
+  padding: 14px 18px;
+  background: #40e18b;
+  color: #081a12;
+  font: inherit;
+  font-weight: 900;
   cursor: pointer;
 }
-
-  button:hover {
-    background: #0056b3;
+.form-footer button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.form-footer button span {
+  margin-left: 12px;
+}
+@media (max-width: 850px) {
+  .contact-section {
+    grid-template-columns: 1fr;
   }
-
-small {
-  color: red;
+  .contact-copy {
+    justify-self: start;
+  }
+}
+@media (max-width: 560px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+  .form-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .form-footer button {
+    width: 100%;
+  }
 }
 
-select {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #fff;
-  font-size: 16px;
+.contact-admin-trigger {
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.22);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
   cursor: pointer;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  transition: 0.2s;
 }
-
-  select:hover,
-  select:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    outline: none;
-  }
-
-  select:disabled {
-    background-color: #f2f2f2;
-    cursor: not-allowed;
-  }
-
-  select option {
-    font-size: 16px;
-    padding: 10px;
-  }
-
-@media screen and (max-width: 1200px) {
-  .Contact {
-    width: 60%;
-  }
+.contact-admin-trigger:hover,
+.contact-admin-trigger:focus-visible {
+  color: rgba(255, 255, 255, 0.72);
+  outline: none;
 }
-
-@media screen and (max-width: 800px) {
-  .Contact {
-    width: 80%;
-  }
+.contact-admin-trigger:focus-visible {
+  text-decoration: underline;
 }
