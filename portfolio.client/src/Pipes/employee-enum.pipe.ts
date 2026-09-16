@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { EmployeeCount } from '../Enums/EmployeeCount';
+import { EmployeeCount } from '../api/generated/data-contracts';
 
 @Pipe({
   name: 'employeeEnum',

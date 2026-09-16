@@ -1,57 +1,51 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Injectable } from '@angular/core';
+import { from, map, Observable, tap } from 'rxjs';
+import type { ApiResult } from 'typedapi-client-helpers';
+import { apiKeyCreateApiKeyGETApiCreateApiKey } from '../api/methods/ApiKey.api';
+import type {
+  HttpValidationProblemDetails,
+  ProblemDetails,
+} from '../api/generated/data-contracts';
 
-@Injectable({
-  providedIn: 'root'
-})
+type ApiKeyResult = ApiResult<{ apiKey: string } | void, HttpValidationProblemDetails | ProblemDetails>;
+
+@Injectable({ providedIn: 'root' })
 export class AuthorizationService {
   private apiKey: string | null = null;
-  private apiUrl = '/api/create-api-key';
 
-  constructor(private http: HttpClient) {
+  getApiKey(): Observable<{ apiKey: string }> {
+    return from(apiKeyCreateApiKeyGETApiCreateApiKey()).pipe(
+      map((result) => this.unwrap(result)),
+      tap(({ apiKey }) => {
+        this.apiKey = apiKey;
+      }),
+    );
   }
 
-  getApiKey() {
-    this.http.get<{apiKey:string}>(this.apiUrl)
-      .subscribe({
-        next: (response: { apiKey: string }) =>        {
-            this.apiKey = response.apiKey;
-        },
-        error: (error) => {
-          console.log(error);
-        }
-      });
+  get currentApiKey(): string | null {
+    return this.apiKey;
   }
 
-  removeApiKey() {
-    this.apiKey = null
+  removeApiKey(): void {
+    this.apiKey = null;
   }
 
-  private getHeaders(): HttpHeaders {
-    return new HttpHeaders({
-      'Authorization': this.apiKey ?? "",
-    });
-  }
+  private unwrap(result: ApiKeyResult): { apiKey: string } {
+    if (result.ok) {
+      if (result.response && typeof result.response === 'object' && 'apiKey' in result.response) {
+        return result.response;
+      }
 
-  postRequestWithData<T, R>(url: string, data: T): Observable<R> {
-    var headers = this.getHeaders();
-    return this.http.post<R>(url, data, { headers })
-  }
-
-  getRequest<T>(url: string, apiKey?: string): Observable<T> {
-    var headers = this.getHeaders();
-    if (apiKey) {
-      headers = headers.set('Authorization', apiKey);
+      throw new Error('API key response is missing the apiKey field.');
     }
-    return this.http.get<T>(url, { headers });
-  }
 
-  deleteRequest<T>(url: string, apiKey?: string): Observable<T> {
-    var headers = this.getHeaders();
-    if (apiKey) {
-      headers = headers.set('Authorization', apiKey);
-    }
-    return this.http.delete<T>(url, { headers });
+    const error = new Error(
+      `API request failed with status ${result.status}`,
+    ) as Error & { status: number; cause?: unknown };
+
+    error.status = result.status;
+    error.cause = result.error;
+
+    throw error;
   }
 }

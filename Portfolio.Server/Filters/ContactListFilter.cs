@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Options;
 using Portfolio.Server.Models;
-using System.Text.Json;
 
 namespace Portfolio.Server.Filters
 {

@@ -1,0 +1,53 @@
+<section class="toast-region" aria-live="polite" aria-label="Meldingen">
+  @for (toast of toastService.toasts(); track toast.id) {
+    <article
+      class="toast"
+      [class.toast-success]="toast.kind === 'success'"
+      [class.toast-error]="toast.kind === 'error'"
+      [class.toast-warning]="toast.kind === 'warning'"
+      [class.toast-info]="toast.kind === 'info'"
+      role="status"
+    >
+      <div class="toast-icon" aria-hidden="true">
+        @switch (toast.kind) {
+          @case ("success") {
+            ✓
+          }
+          @case ("error") {
+            !
+          }
+          @case ("warning") {
+            ⚠
+          }
+          @default {
+            i
+          }
+        }
+      </div>
+
+      <div class="toast-copy">
+        <strong>{{ toast.title }}</strong>
+        <span>{{ toast.message }}</span>
+      </div>
+
+      @if (toast.closeButton) {
+        <button
+          type="button"
+          class="toast-close"
+          (click)="toastService.dismiss(toast.id)"
+          aria-label="Melding sluiten"
+        >
+          ×
+        </button>
+      }
+
+      @if (toast.progressBar && toast.timeOut > 0) {
+        <span
+          class="toast-progress"
+          [style.animation-duration.ms]="toast.timeOut"
+          aria-hidden="true"
+        ></span>
+      }
+    </article>
+  }
+</section>

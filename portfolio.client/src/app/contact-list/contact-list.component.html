@@ -33,7 +33,11 @@
             <td>{{ contact.email }}</td>
             <td *ngIf="contact.phone">{{ contact.phone }}</td>
             <td>{{ contact.message }}</td>
-            <td class="DeleteTD"><Button class="default-button" (click)="deleteContact(contact.id)">Delete</Button></td>
+            <td class="DeleteTD">
+              <Button class="default-button" (click)="deleteContact(contact.id)"
+                >Delete</Button
+              >
+            </td>
           </tr>
         </tbody>
       </table>
@@ -47,18 +51,22 @@
       <form (ngSubmit)="getContacts()" #apiKeyForm="ngForm">
         <div>
           <label for="apiKey">API Key: </label>
-          <input type="text"
-                 id="apiKey"
-                 name="password"
-                 [(ngModel)]="apiKey"
-                 autocomplete="off"
-                 required
-                 #apiKeyInput="ngModel">
+          <input
+            type="text"
+            id="apiKey"
+            name="password"
+            [(ngModel)]="apiKey"
+            autocomplete="off"
+            required
+            #apiKeyInput="ngModel"
+          />
         </div>
         <div *ngIf="apiKeyInput.invalid && apiKeyInput.touched">
           <p class="error">API Key is required.</p>
         </div>
-        <button class="default-button submit-button" type="submit">Submit</button>
+        <button class="default-button submit-button" type="submit">
+          Submit
+        </button>
       </form>
     </div>
   </div>

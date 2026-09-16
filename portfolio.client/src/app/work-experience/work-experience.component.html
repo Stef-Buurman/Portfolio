@@ -1,38 +1,35 @@
-<section class="WorkExperienceSection">
-  <div class="WorkExperienceContainer">
-    <div class="WorkExperience">
-      <h1>Werk ervaring</h1>
-      <ul>
-        <li *ngFor="let work of workExperiences">
-          <img [src]="work.logo" [alt]="work.alt" class="logo" />
-          <div class="details">
-            <div class="job-title">{{ work.jobTitle }}</div>
-            <div class="company">{{ work.company }}</div>
-            <div class="date">{{ work.date }}</div>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <div class="BijbaantjesContainer">
-      <div class="Bijbaantjes">
-        <h2>Bijbaantjes</h2>
-        <p>
-          Ik heb bij drie verschillende supermarkten gewerkt. In 2018 ben ik
-          begonnen bij de Jumbo als vulploegmedewerker tot 2020. Vanaf 2020 tot
-          2022 heb ik gewerkt bij de Coop als allround medewerker. In 2021 heb
-          ik een tijdje bij de Albert Heijn als bakkerijmedewerker gewerkt. Dit
-          bleek echter niet te zijn waar ik naar op zoek was. Op dit moment werk
-          ik bij Coolblue als laad- en los medewerker op het depot in Rotterdam.
-          Hier werk ik drie keer per week vroeg in de ochtend. Doordat ik deze
-          bijbanen heb gehad weet ik hoe het is om te samenwerken en om in een
-          groep te werken. Daarnaast heb ik veel contact gehad met klanten wat
-          mij in de toekomst kan helpen. Verder heb ik bij Last Mile Solutions
-          gewerkt als werkstudent in het fraudeteam, hier heb ik een project wat
-          als schoolproject is begonnen geimplementeerd in de praktijk. Hier heb
-          ik veel geleerd over het werken in een team en het toepassen van mijn
-          kennis in de praktijk.
-        </p>
-      </div>
-    </div>
+<section class="experience-section">
+  <div class="experience-heading">
+    <span>Werkervaring</span>
+    <h2>De meeste dingen leer ik toch door ze gewoon te doen.</h2>
+    <p>
+      Door mee te werken in echte teams en steeds meer ervaring op te doen in de
+      praktijk.
+    </p>
+  </div>
+  <div class="experience-layout">
+    <ol class="timeline">
+      <li *ngFor="let work of workExperiences">
+        <div class="logo-wrap"><img [src]="work.logo" [alt]="work.alt" /></div>
+        <div>
+          <span class="date">{{ work.date }}</span>
+          <h3>{{ work.jobTitle }}</h3>
+          <p>{{ work.company }}</p>
+        </div>
+      </li>
+    </ol>
+    <aside>
+      <span>Daarnaast</span>
+      <h3>Bijbaantjes hebben me ook veel geleerd.</h3>
+      <p>
+        Van supermarkten tot vroeg laden en lossen bij Coolblue. Daardoor heb ik
+        niet alleen geleerd om zelfstandig te werken, maar ook gewoon om op tijd
+        te zijn, samen te werken en met allerlei mensen om te gaan.
+      </p>
+      <p>
+        Bij Last Mile Solutions kon ik iets dat als schoolproject begon
+        uiteindelijk in de praktijk toepassen. Die stap vond ik echt leuk.
+      </p>
+    </aside>
   </div>
 </section>

@@ -3,8 +3,8 @@
   justify-content: center;
   align-items: flex-start;
   padding: 2rem;
-  background-color: #1B3141;
-  color: #00C260;
+  background-color: #1b3141;
+  color: #00c260;
   max-height: 80vh;
 }
 
@@ -26,41 +26,43 @@ h2 {
   margin-top: 1.5rem;
 }
 
-  .contact-table th, .contact-table td {
-    padding: 1rem;
-    text-align: left;
-    border: 1px solid #326038;
-  }
+.contact-table th,
+.contact-table td {
+  padding: 1rem;
+  text-align: left;
+  border: 1px solid #326038;
+}
 
-    .contact-table td.DeleteTD {
-      border: none;
-    }
+.contact-table td.DeleteTD {
+  border: none;
+}
 
-  .contact-table th {
-    font-weight: bold;
-  }
+.contact-table th {
+  font-weight: bold;
+}
 
-  .contact-table a {
-    color: #007bff;
-    text-decoration: none;
-  }
+.contact-table a {
+  color: #007bff;
+  text-decoration: none;
+}
 
-    .contact-table a:hover {
-      text-decoration: underline;
-    }
+.contact-table a:hover {
+  text-decoration: underline;
+}
 
 @media (max-width: 768px) {
   .contact-table {
     font-size: 14px;
   }
 
-    .contact-table th, .contact-table td {
-      padding: 0.8rem;
-    }
+  .contact-table th,
+  .contact-table td {
+    padding: 0.8rem;
+  }
 }
 
-.error{
-    color:red;
+.error {
+  color: red;
 }
 
 .submit-button {
