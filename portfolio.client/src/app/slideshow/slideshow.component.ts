@@ -20,7 +20,7 @@ export class SlideshowComponent implements OnInit, OnDestroy {
   readonly slides: PortfolioSlide[] = [
     {
       src: 'Assets/Images/Slideshow/Foto1.png',
-      position: 'center 10%',
+      position: 'center top',
       label: 'Dit ben ik',
       note: 'Dit ben ik dus. Meestal achter een scherm, anders waarschijnlijk op de motor.',
     },
