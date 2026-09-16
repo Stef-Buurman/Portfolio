@@ -28,11 +28,10 @@ export class ContactComponent {
     message: '',
   };
 
-  employeeCounts = Object.values(EmployeeCount)
-    .map((value) => ({
-      index: value,
-      label: value,
-    }));
+  employeeCounts = Object.values(EmployeeCount).map((value) => ({
+    index: value,
+    label: value,
+  }));
 
   @ViewChild('contactForm') contactForm!: NgForm;
   constructor(

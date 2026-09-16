@@ -9,17 +9,21 @@
  * ## SOURCE: https://github.com/Stef-Buurman/TypedApi/tree/main/npm/typed-api-client ##
  * -------------------------------------------------------------------------------------
  */
-import { ContentType, request } from "../generated/http-client";
-import type { RequestParams } from "../generated/http-client";
+import { ContentType, request } from '../generated/http-client';
+import type { RequestParams } from '../generated/http-client';
 import type {
   Contact,
   ContactDeleteContactDELETEApiContactIdParams,
   HttpValidationProblemDetails,
   ProblemDetails,
-} from "../generated/data-contracts";
-import { handleApiResponse } from "typedapi-client-helpers";
-import type { ApiMethodOptions, ApiResult } from "typedapi-client-helpers";
-import { handleGoodResult as typedApiDefaultSuccessHandler, handleErrors as typedApiDefaultErrorHandler, unknownErrorMessage as typedApiDefaultErrorMessage } from "../../defaultApiFunctions";
+} from '../generated/data-contracts';
+import { handleApiResponse } from 'typedapi-client-helpers';
+import type { ApiMethodOptions, ApiResult } from 'typedapi-client-helpers';
+import {
+  handleGoodResult as typedApiDefaultSuccessHandler,
+  handleErrors as typedApiDefaultErrorHandler,
+  unknownErrorMessage as typedApiDefaultErrorMessage,
+} from '../../defaultApiFunctions';
 
 /**
  * No description
@@ -30,18 +34,38 @@ import { handleGoodResult as typedApiDefaultSuccessHandler, handleErrors as type
  */
 export async function contactUploadContactPOSTApiContact(
   data: Contact,
-  options: ApiMethodOptions<void, HttpValidationProblemDetails | ProblemDetails | HttpValidationProblemDetails, RequestParams> = {}
-): Promise<ApiResult<void, HttpValidationProblemDetails | ProblemDetails | HttpValidationProblemDetails>> {
+  options: ApiMethodOptions<
+    void,
+    | HttpValidationProblemDetails
+    | ProblemDetails
+    | HttpValidationProblemDetails,
+    RequestParams
+  > = {},
+): Promise<
+  ApiResult<
+    void,
+    HttpValidationProblemDetails | ProblemDetails | HttpValidationProblemDetails
+  >
+> {
   const { onSuccess, onError, params = {} } = options;
 
-  return handleApiResponse<void, HttpValidationProblemDetails | ProblemDetails | HttpValidationProblemDetails>(
-    () => request<void, HttpValidationProblemDetails | ProblemDetails | HttpValidationProblemDetails>({
-      ...params,
-      path: `/api/contact`,
-      method: "POST",
-      body: data,
-      type: ContentType.Json,
-    }),
+  return handleApiResponse<
+    void,
+    HttpValidationProblemDetails | ProblemDetails | HttpValidationProblemDetails
+  >(
+    () =>
+      request<
+        void,
+        | HttpValidationProblemDetails
+        | ProblemDetails
+        | HttpValidationProblemDetails
+      >({
+        ...params,
+        path: `/api/contact`,
+        method: 'POST',
+        body: data,
+        type: ContentType.Json,
+      }),
     {
       onSuccess: onSuccess ?? typedApiDefaultSuccessHandler,
       onError: onError ?? typedApiDefaultErrorHandler,
@@ -58,17 +82,37 @@ export async function contactUploadContactPOSTApiContact(
  * @request GET:/api/contacts
  */
 export async function contactGetContactsGETApiContacts(
-  options: ApiMethodOptions<Contact[], HttpValidationProblemDetails | ProblemDetails | HttpValidationProblemDetails, RequestParams> = {}
-): Promise<ApiResult<Contact[], HttpValidationProblemDetails | ProblemDetails | HttpValidationProblemDetails>> {
+  options: ApiMethodOptions<
+    Contact[],
+    | HttpValidationProblemDetails
+    | ProblemDetails
+    | HttpValidationProblemDetails,
+    RequestParams
+  > = {},
+): Promise<
+  ApiResult<
+    Contact[],
+    HttpValidationProblemDetails | ProblemDetails | HttpValidationProblemDetails
+  >
+> {
   const { onSuccess, onError, params = {} } = options;
 
-  return handleApiResponse<Contact[], HttpValidationProblemDetails | ProblemDetails | HttpValidationProblemDetails>(
-    () => request<Contact[], HttpValidationProblemDetails | ProblemDetails | HttpValidationProblemDetails>({
-      ...params,
-      path: `/api/contacts`,
-      method: "GET",
-      format: "json",
-    }),
+  return handleApiResponse<
+    Contact[],
+    HttpValidationProblemDetails | ProblemDetails | HttpValidationProblemDetails
+  >(
+    () =>
+      request<
+        Contact[],
+        | HttpValidationProblemDetails
+        | ProblemDetails
+        | HttpValidationProblemDetails
+      >({
+        ...params,
+        path: `/api/contacts`,
+        method: 'GET',
+        format: 'json',
+      }),
     {
       onSuccess: onSuccess ?? typedApiDefaultSuccessHandler,
       onError: onError ?? typedApiDefaultErrorHandler,
@@ -86,16 +130,36 @@ export async function contactGetContactsGETApiContacts(
  */
 export async function contactDeleteContactDELETEApiContactId(
   pathParams: ContactDeleteContactDELETEApiContactIdParams,
-  options: ApiMethodOptions<void, HttpValidationProblemDetails | ProblemDetails | HttpValidationProblemDetails, RequestParams> = {}
-): Promise<ApiResult<void, HttpValidationProblemDetails | ProblemDetails | HttpValidationProblemDetails>> {
+  options: ApiMethodOptions<
+    void,
+    | HttpValidationProblemDetails
+    | ProblemDetails
+    | HttpValidationProblemDetails,
+    RequestParams
+  > = {},
+): Promise<
+  ApiResult<
+    void,
+    HttpValidationProblemDetails | ProblemDetails | HttpValidationProblemDetails
+  >
+> {
   const { onSuccess, onError, params = {} } = options;
 
-  return handleApiResponse<void, HttpValidationProblemDetails | ProblemDetails | HttpValidationProblemDetails>(
-    () => request<void, HttpValidationProblemDetails | ProblemDetails | HttpValidationProblemDetails>({
-      ...params,
-      path: `/api/contact/${encodeURIComponent(String(pathParams["id"]))}`,
-      method: "DELETE",
-    }),
+  return handleApiResponse<
+    void,
+    HttpValidationProblemDetails | ProblemDetails | HttpValidationProblemDetails
+  >(
+    () =>
+      request<
+        void,
+        | HttpValidationProblemDetails
+        | ProblemDetails
+        | HttpValidationProblemDetails
+      >({
+        ...params,
+        path: `/api/contact/${encodeURIComponent(String(pathParams['id']))}`,
+        method: 'DELETE',
+      }),
     {
       onSuccess: onSuccess ?? typedApiDefaultSuccessHandler,
       onError: onError ?? typedApiDefaultErrorHandler,

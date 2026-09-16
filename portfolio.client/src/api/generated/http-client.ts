@@ -10,9 +10,9 @@
  * -------------------------------------------------------------------------------------
  */
 
-import { createApiClient } from "typedapi-client-helpers";
+import { createApiClient } from 'typedapi-client-helpers';
 
-export { ContentType } from "typedapi-client-helpers";
+export { ContentType } from 'typedapi-client-helpers';
 
 export type {
   ApiConfig,
@@ -23,10 +23,10 @@ export type {
   RequestParams,
   ResponseFormat,
   RuntimeRequestParams,
-} from "typedapi-client-helpers";
+} from 'typedapi-client-helpers';
 
 const apiClient = createApiClient({
-  baseUrl: "",
+  baseUrl: '',
 });
 
 export const configureApiClient = apiClient.configureApiClient;

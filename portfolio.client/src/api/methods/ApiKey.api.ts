@@ -9,12 +9,19 @@
  * ## SOURCE: https://github.com/Stef-Buurman/TypedApi/tree/main/npm/typed-api-client ##
  * -------------------------------------------------------------------------------------
  */
-import { request } from "../generated/http-client";
-import type { RequestParams } from "../generated/http-client";
-import type { HttpValidationProblemDetails, ProblemDetails } from "../generated/data-contracts";
-import { handleApiResponse } from "typedapi-client-helpers";
-import type { ApiMethodOptions, ApiResult } from "typedapi-client-helpers";
-import { handleGoodResult as typedApiDefaultSuccessHandler, handleErrors as typedApiDefaultErrorHandler, unknownErrorMessage as typedApiDefaultErrorMessage } from "../../defaultApiFunctions";
+import { request } from '../generated/http-client';
+import type { RequestParams } from '../generated/http-client';
+import type {
+  HttpValidationProblemDetails,
+  ProblemDetails,
+} from '../generated/data-contracts';
+import { handleApiResponse } from 'typedapi-client-helpers';
+import type { ApiMethodOptions, ApiResult } from 'typedapi-client-helpers';
+import {
+  handleGoodResult as typedApiDefaultSuccessHandler,
+  handleErrors as typedApiDefaultErrorHandler,
+  unknownErrorMessage as typedApiDefaultErrorMessage,
+} from '../../defaultApiFunctions';
 
 /**
  * No description
@@ -24,16 +31,36 @@ import { handleGoodResult as typedApiDefaultSuccessHandler, handleErrors as type
  * @request GET:/api/create-api-key
  */
 export async function apiKeyCreateApiKeyGETApiCreateApiKey(
-  options: ApiMethodOptions<void, HttpValidationProblemDetails | ProblemDetails | HttpValidationProblemDetails, RequestParams> = {}
-): Promise<ApiResult<void, HttpValidationProblemDetails | ProblemDetails | HttpValidationProblemDetails>> {
+  options: ApiMethodOptions<
+    void,
+    | HttpValidationProblemDetails
+    | ProblemDetails
+    | HttpValidationProblemDetails,
+    RequestParams
+  > = {},
+): Promise<
+  ApiResult<
+    void,
+    HttpValidationProblemDetails | ProblemDetails | HttpValidationProblemDetails
+  >
+> {
   const { onSuccess, onError, params = {} } = options;
 
-  return handleApiResponse<void, HttpValidationProblemDetails | ProblemDetails | HttpValidationProblemDetails>(
-    () => request<void, HttpValidationProblemDetails | ProblemDetails | HttpValidationProblemDetails>({
-      ...params,
-      path: `/api/create-api-key`,
-      method: "GET",
-    }),
+  return handleApiResponse<
+    void,
+    HttpValidationProblemDetails | ProblemDetails | HttpValidationProblemDetails
+  >(
+    () =>
+      request<
+        void,
+        | HttpValidationProblemDetails
+        | ProblemDetails
+        | HttpValidationProblemDetails
+      >({
+        ...params,
+        path: `/api/create-api-key`,
+        method: 'GET',
+      }),
     {
       onSuccess: onSuccess ?? typedApiDefaultSuccessHandler,
       onError: onError ?? typedApiDefaultErrorHandler,

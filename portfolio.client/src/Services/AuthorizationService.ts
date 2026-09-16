@@ -7,7 +7,10 @@ import type {
   ProblemDetails,
 } from '../api/generated/data-contracts';
 
-type ApiKeyResult = ApiResult<{ apiKey: string } | void, HttpValidationProblemDetails | ProblemDetails>;
+type ApiKeyResult = ApiResult<
+  { apiKey: string } | void,
+  HttpValidationProblemDetails | ProblemDetails
+>;
 
 @Injectable({ providedIn: 'root' })
 export class AuthorizationService {
@@ -32,7 +35,11 @@ export class AuthorizationService {
 
   private unwrap(result: ApiKeyResult): { apiKey: string } {
     if (result.ok) {
-      if (result.response && typeof result.response === 'object' && 'apiKey' in result.response) {
+      if (
+        result.response &&
+        typeof result.response === 'object' &&
+        'apiKey' in result.response
+      ) {
         return result.response;
       }
 

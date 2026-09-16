@@ -26,12 +26,12 @@ export interface Contact {
 }
 
 export const EmployeeCount = {
-  OneToTen: "OneToTen",
-  ElevenToFifty: "ElevenToFifty",
-  FiftyOneToTwoHundred: "FiftyOneToTwoHundred",
-  TwoHundredToFiveHundred: "TwoHundredToFiveHundred",
-  FiveHundredToOneThousand: "FiveHundredToOneThousand",
-  OneThousandPlus: "OneThousandPlus",
+  OneToTen: 'OneToTen',
+  ElevenToFifty: 'ElevenToFifty',
+  FiftyOneToTwoHundred: 'FiftyOneToTwoHundred',
+  TwoHundredToFiveHundred: 'TwoHundredToFiveHundred',
+  FiveHundredToOneThousand: 'FiveHundredToOneThousand',
+  OneThousandPlus: 'OneThousandPlus',
 } as const;
 export type EmployeeCount = (typeof EmployeeCount)[keyof typeof EmployeeCount];
 
@@ -41,7 +41,7 @@ export type HttpValidationProblemDetails = ProblemDetails & {
 };
 
 export interface ProblemDetails {
-  "type"?: string | null;
+  type?: string | null;
   title?: string | null;
   /** @format int32 */
   status?: number | null;
