@@ -42,15 +42,19 @@
   text-align: left;
 }
 .brand-mark {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  overflow: hidden;
   border-radius: 13px;
-  background: #32e17f;
-  color: #07140d;
-  font-weight: 900;
-  letter-spacing: -0.04em;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
+}
+.brand-mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 70%;
 }
 .brand-copy {
   display: flex;
