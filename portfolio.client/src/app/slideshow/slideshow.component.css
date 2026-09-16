@@ -120,14 +120,12 @@ h1 em {
   box-shadow: none;
 }
 
-.linkedin-button svg {
+.linkedin-icon {
   width: 20px;
   height: 20px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  background: currentColor;
+  -webkit-mask: url('/Assets/Images/Icon/LinkedIn.svg') center / contain no-repeat;
+  mask: url('/Assets/Images/Icon/LinkedIn.svg') center / contain no-repeat;
 }
 
 .linkedin-button .external-arrow {
