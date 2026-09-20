@@ -159,7 +159,11 @@ h1 em {
 .photo-stage {
   position: relative;
   z-index: 2;
+  width: 100%;
+  max-width: 920px;
   min-width: 0;
+  box-sizing: border-box;
+  justify-self: end;
   padding: 38px 32px 30px;
 }
 
@@ -200,7 +204,9 @@ h1 em {
 }
 
 .slide-viewport {
-  height: clamp(360px, 48vw, 650px);
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  height: auto;
   overflow: hidden;
   background: #0b171b;
 }
@@ -321,6 +327,8 @@ figcaption p {
   }
 
   .photo-stage {
+    max-width: 900px;
+    justify-self: center;
     padding: 20px 16px 35px;
   }
 
